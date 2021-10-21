@@ -28,7 +28,7 @@ const columns = [
   { id: 'targetFromSourceId', label: 'Gene Ensembl ID', sortable:true },
   { id: 'Disease', label: 'Disease', sortable:true,
     renderCell: ({ diseaseFromSourceMappedId, Disease }) => 
-      <Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link> 
+       <div style={{width: 300, overflow: "scroll"}}><Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link> </div>
   },
   { id: 'PMTL', label: 'PMTL', sortable:true , renderCell: () => <RelevantIcon/>, filterValue: false},
   { id: 'dataset', label: 'Dataset', sortable:true },

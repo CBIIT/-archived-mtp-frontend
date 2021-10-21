@@ -22,7 +22,7 @@ const columns = [
   { id: 'dataset', label: 'Dataset', sortable: true },
   { id: 'Disease', label: 'Disease', sortable: true,
     renderCell: ({ diseaseFromSourceMappedId, Disease }) => 
-      <Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link>},
+       <div style={{width: 300, overflow: "scroll"}}><Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link></div>},
   { id: 'geneFullName', label: 'Gene full name', sortable: true },
   { id: 'geneType', label: 'Gene type', sortable: true },
   { id: 'proteinRefseqId', label: 'Protein RefSeq ID', sortable: true },

@@ -19,7 +19,7 @@ const columns = [
   { id: 'dataset', label: 'Dataset', sortable: true, comparator: (row1, row2) => genericComparator(row1, row2, 'Dataset') },
   { id: 'Disease', label: 'Disease', sortable: true, 
     renderCell: ({ diseaseFromSourceMappedId, Disease }) => 
-      <div style={{width: 250, overflow: "scroll"}}><Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link></div> },
+      <div style={{width: 300, overflow: "scroll"}}><Link to={`/disease/${diseaseFromSourceMappedId}`}>{Disease}</Link></div> },
   { id: 'totalAlterationsOverPatientsInDataset', label: 'Total alterations/Patients in dataset', sortable: true },
   { id: 'frequencyInOverallDataset', label: 'Frequency in overall dataset', sortable: true },
   { id: 'totalPrimaryTumorsAlteredOverPrimaryTumorsInDataset', label: 'Total primary tumors altered/Primary tumors in dataset', sortable: true },
