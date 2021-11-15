@@ -14,8 +14,13 @@ import * as Safety from '../../sections/target/Safety';
 import * as Tep from '../../sections/target/Tep';
 import * as Tractability from '../../sections/target/Tractability';
 import * as MolecularInteractions from '../../sections/target/MolecularInteractions';
+import * as OpenPedCanSomaticMutations from '../../sections/target/OpenPedCanSomaticMutations'
+import * as OpenPedCanGeneExpression from '../../sections/target/OpenPedCanGeneExpression'
 
-export default [
+
+const sections = [
+  OpenPedCanSomaticMutations,
+  OpenPedCanGeneExpression,
   KnownDrugs,
   Tractability,
   Safety,
@@ -32,3 +37,4 @@ export default [
   ComparativeGenomics,
   Bibliography,
 ];
+export default sections;

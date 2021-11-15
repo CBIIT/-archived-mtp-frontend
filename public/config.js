@@ -1,3 +1,5 @@
 // Default configuration is defined within the application bundle
-var configUrlApi = "localhost/api/v4/graphql"
-var configUrlApiBeta = "localhost/api/v4/graphq"
+window.injectedEnv = {
+  configUrlApi: 'https://ppdc-otp-dev.bento-tools.org/api/v4/graphql',
+  configUrlApiBeta: 'https://ppdc-otp-dev.bento-tools.org/api/v4/graphql',
+};

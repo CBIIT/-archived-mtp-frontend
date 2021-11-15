@@ -17,6 +17,7 @@ import {
 import Link from '../../components/Link';
 import { Skeleton } from '@material-ui/lab';
 import usePlatformApi from '../../hooks/usePlatformApi';
+import RMTLPopover from '../../components/RMTL/RMTLPopover';
 
 const useStyles = makeStyles(theme => ({
   card: { height: '100%' },
@@ -60,6 +61,8 @@ function ProfileHeader() {
     data?.disease || {};
   const targetDescription = data?.target.proteinAnnotations?.functions?.[0];
 
+  const pmtl = data?.target.pmtl_fda_designation || undefined;
+
   const diseaseSynonyms = parseSynonyms(data?.disease.synonyms || []);
 
   const { id: ensgId, approvedSymbol } = data?.target || {};
@@ -79,6 +82,10 @@ function ProfileHeader() {
                 <Link to={`/target/${ensgId}`}>
                   <FontAwesomeIcon icon={faDna} /> {approvedSymbol}
                 </Link>
+                <RMTLPopover
+                  otherStyle={{ RMTLContainer: { marginLeft: '50px' } }}
+                  pmtl={pmtl}
+                />
               </Typography>
             }
           />
