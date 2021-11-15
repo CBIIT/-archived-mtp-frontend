@@ -19,8 +19,13 @@ import * as SlapEnrich from '../../sections/evidence/SlapEnrich';
 import * as SysBio from '../../sections/evidence/SysBio';
 import * as UniProtLiterature from '../../sections/evidence/UniProtLiterature';
 import * as UniProtVariants from '../../sections/evidence/UniProtVariants';
+import * as Orphanet from '../../sections/evidence/Orphanet';
+import * as OpenPedCanGeneExpression from '../../sections/evidence/OpenPedCanGeneExpression';
+import * as OpenPedCanSomaticMutations from '../../sections/evidence/OpenPedCanSomaticMutations'
 
-export default [
+const sections = [
+  OpenPedCanSomaticMutations,
+  OpenPedCanGeneExpression,
   OTGenetics,
   PheWASCatalog,
   EVA,
@@ -29,6 +34,7 @@ export default [
   UniProtLiterature,
   UniProtVariants,
   ClinGen,
+  Orphanet,
   CancerGeneCensus,
   IntOgen,
   EVASomatic,
@@ -42,3 +48,4 @@ export default [
   ExpressionAtlas,
   Phenodigm,
 ];
+export default sections;

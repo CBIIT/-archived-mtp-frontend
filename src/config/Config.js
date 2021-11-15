@@ -1,10 +1,10 @@
 // Configuration Object
 export const config = {
   urlApi:
-    window.configUrlApi ??
-    'https://api-beta-dot-open-targets-eu-dev.appspot.com/api/v4/graphql',
+    window.injectedEnv.configUrlApi ??
+    'https://ppdc-otp-dev.bento-tools.org/api/v4/graphql',
   urlApiBeta:
-    window.configUrlApiBeta ??
-    'https://api-beta-dot-open-targets-eu-dev.appspot.com/api/v4/graphql',
-  googleTagManagerID: window.configGoogleTagManagerID ?? null,
+    window.injectedEnv.configUrlApiBeta ??
+    'https://ppdc-otp-dev.bento-tools.org/api/v4/graphql',
+  googleTagManagerID: window.injectedEnv.configGoogleTagManagerID ?? null,
 };
