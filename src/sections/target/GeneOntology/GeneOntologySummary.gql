@@ -1,9 +1,0 @@
-fragment GeneOntologySummaryFragment on Target {
-  proteinAnnotations {
-    id
-  }
-  geneOntology {
-    term
-    id
-  }
-}

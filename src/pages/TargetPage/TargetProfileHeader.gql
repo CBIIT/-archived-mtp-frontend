@@ -1,8 +1,0 @@
-fragment TargetProfileHeaderFragment on Target {
-  proteinAnnotations {
-    id
-    functions
-  }
-  symbolSynonyms
-  nameSynonyms
-}

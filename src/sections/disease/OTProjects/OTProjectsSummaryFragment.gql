@@ -1,5 +1,0 @@
-fragment OTProjectsSummaryFragment on Disease {
-  otarProjects {
-    status
-  }
-}
