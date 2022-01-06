@@ -2,14 +2,11 @@ import React from 'react';
 import {
   Grid,
   makeStyles,
-  Typography,
   Paper,
 } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import NCIFooter from '../../components/NCIFooter';
 import NCIHeader from '../../components/NCIHeader';
-import Link from '../../components/Link';
-import Version from './Version';
 import {
   appTitle,
   appDescription,
