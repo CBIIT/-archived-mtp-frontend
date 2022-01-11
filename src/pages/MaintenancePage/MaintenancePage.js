@@ -18,7 +18,7 @@ import RouteLinks from '../../components/helpers/routeLinks';
 
 const useStyles = makeStyles(theme => ({
  homeBox: {
-  backgroundImage: 'radial-gradient(#99D3FF,#79c4fc)',
+  backgroundImage: 'radial-gradient(ellipse at right bottom, #67cdd9,#6bb1e7)',
   height: '980px',
  },
  homeboxContainer: {
@@ -39,7 +39,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '46px',
     lineHeight: '45px',
     color: '#00344F',
-    padding: '15px'
+    padding: '15px',
+    fontWeight: 'bolder',
   },
   desc: {
     fontSize: '17px',
