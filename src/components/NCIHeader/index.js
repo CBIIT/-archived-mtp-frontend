@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import LinkBar from '../LinkBar';
 import NCINavBar from '../NCINavBar';
 import NCILogoBar from '../NCILogoBar';
 
