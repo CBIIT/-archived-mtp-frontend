@@ -9,7 +9,7 @@ function Body({ definition, id, label: symbol }) {
   const ensemblId = id;
   const downloadFileName = `OpenPedCanGeneExpression-${ensemblId}`;
   const imageAlt = "Ssingle-gene all-diseases";
-
+  const configAPI = "https://raw.githubusercontent.com/CBIIT/mtp-config/main/front-end/page_target/GeneExpression_Config.json"
   return (
     <OpenPedCanGeneExpression
       definition={definition}
@@ -21,6 +21,7 @@ function Body({ definition, id, label: symbol }) {
       Description={Description}
       fileStem={downloadFileName}
       imageAlt={imageAlt}
+      configAPI={configAPI}
     />
   )
 }

@@ -3,12 +3,9 @@ import { Tab, Tabs, Grid, makeStyles} from '@material-ui/core';
 import SectionItem from '../../../components/Section/SectionItem';
 import DataDownloader from '../../../components/Table/DataDownloader';
 import { dataTypesMap } from '../../../dataTypes';
+import { fetchConfigObj, interpretConfig } from './utils';
 
-
-
-
-
-function Body({ definition, id, label, getData, getPlot, Description, entity, fileStem, imageAlt}) {
+function Body({ definition, id, label, getData, getPlot, Description, entity, fileStem, imageAlt, configAPI }) {
 
   const [json, setJson] = useState([]);
   const [linearPlot, setLinearPlot] = useState('')
@@ -21,7 +18,6 @@ function Body({ definition, id, label, getData, getPlot, Description, entity, fi
   const handleOnChange = (_, tab) => {
     return setTab(tab);
   };
-
 
   const useStyles = makeStyles({
   tabs: {
@@ -109,6 +105,18 @@ function Body({ definition, id, label, getData, getPlot, Description, entity, fi
     { id: 'specimen_descriptor_fill'},
     { id: 'box_sample_count'}
   ]
+  const [configDataDownloaderColumns, setConfigDataDownloaderColumns] = useState([])
+  // Fetch and Interpret Config File
+  useEffect(()=>{
+    fetchConfigObj(configAPI).then(
+         response => {
+           // Interpret Config file
+           const interpretedObj = interpretConfig(response)
+           setConfigDataDownloaderColumns(interpretedObj.dataDownloaderColumns)
+         }
+       )
+   }, [configAPI])
+
   return   (
       <SectionItem
         definition={definition}
@@ -134,7 +142,11 @@ function Body({ definition, id, label, getData, getPlot, Description, entity, fi
               {tab === 'linear' ? (
                 <>
                   <Grid container>
-                    <DataDownloader rows={json} columns={columns} fileStem={fileStem} captionLabel="Download data as"/>
+                    <DataDownloader 
+                      rows={json}
+                      columns={configDataDownloaderColumns || columns}
+                      fileStem={fileStem} 
+                      captionLabel="Download data as" />
                     <Grid item xs={12} style={{overflow: 'auto'}}>
                       <img src={`data:image/png;base64,${linearPlot}`}
                        className={classes.image}  alt={`${imageAlt} TPM boxplot (Linear)`} />
@@ -146,7 +158,11 @@ function Body({ definition, id, label, getData, getPlot, Description, entity, fi
               {tab === 'log10' ? (
                 <>
                   <Grid container>
-                    <DataDownloader rows={json} columns={columns} fileStem={fileStem} captionLabel="Download data as"/>
+                    <DataDownloader 
+                      rows={json}
+                      columns={configDataDownloaderColumns || columns}
+                      fileStem={fileStem} 
+                      captionLabel="Download data as" />
                     <Grid item xs={12} style={{overflow: 'auto'}}>
                       <img  className={classes.image} src={`data:image/png;base64,${log10Plot}`}
                       alt={`${imageAlt} TPM boxplot (Lag10)`} />
