@@ -14,14 +14,13 @@ const styles = ()=>({
       background: '#ffffff',
       position: 'fixed',
       zIndex: '40002',
-      top: 0,
+      top: 24,
     }
 });
 
 const NCIHeader = ({ classes, ...props }) => {
   return (
     <div id="header" className={classes.headerBar}>
-      <LinkBar />
       <NCILogoBar />
       <NCINavBar />
     </div>
