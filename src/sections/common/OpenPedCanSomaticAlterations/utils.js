@@ -119,12 +119,12 @@ export const interpretConfig = (config, addColumnCustomFields) => {
 
     /****************  Column Used for Displaying Table on the UI ****************/
     if (!c.hidden) {
-      let column = {
-        id: c.id,
-      }
-      if (c.label) {
-        column.label = c.label
-      }
+      let column = { id: c.id, }
+
+      if (c.label) column.label = c.label
+
+      if (c.sortable && c.sortable === true) column.sortable = true
+
       if (c.externalLink || c.internalLink) {
         const linkObj = c.externalLink
                           ? { type: "external", obj: c.externalLink }
@@ -143,12 +143,14 @@ export const interpretConfig = (config, addColumnCustomFields) => {
           handleMissingField(c.id)
         }
       }
+
       if (c.id === 'PMTL') {
         column.renderCell = ({PMTL}) => renderPMTLCell(PMTL)
         // TODO: ADD filterValue as a new Field under mtp-config
         // TODO: What part of the link should be used for filtering purpose
          column.filterValue = false
       }
+
       if (c.comparator) {
         /* 
          * TODO: Add comparator as new field for special columns under mtp-config
@@ -161,8 +163,8 @@ export const interpretConfig = (config, addColumnCustomFields) => {
         const {id, isNumeric} = c.comparator
         column.comparator = (row1, row2) => genericComparator(row1, row2, id, isNumeric);
       }
-      column = addColumnCustomFields ? addColumnCustomFields(column): column
 
+      column = addColumnCustomFields ? addColumnCustomFields(column): column
       interpretedConfig.columns.push(column)
     }
   })
