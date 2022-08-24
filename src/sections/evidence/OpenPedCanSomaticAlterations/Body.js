@@ -10,11 +10,14 @@ import Summary from './Summary';
 const SOMATIC_ALTERATIONS_QUERY = loader('./SomaticAlterationsQuery.gql');
 
 function Body({ definition, id, label }) {
+  const summaryRequest = usePlatformApi(Summary.fragments.evidenceSomaticAlterationsSummary)
   const { ensgId: ensemblId, efoId } = id;
   const variables = { ensemblId, efoId }
   const dataDownloaderFileStem = `OpenPedCanSomaticAlterations-${ensemblId}-${efoId}`
 
-  const summaryRequest = usePlatformApi(Summary.fragments.evidenceSomaticAlterationsSummary)
+  // TODO: Have this imported as env variable
+  const CONFIG_URL = "https://raw.githubusercontent.com/CBIIT/mtp-config/CCDIMTP-76"
+  const configAPI = `${CONFIG_URL}/front-end/page_evidence`
   return (
     <OpenPedCanSomaticAlterationsBody 
       definition={definition}
@@ -26,6 +29,7 @@ function Body({ definition, id, label }) {
       summaryRequest={summaryRequest}
       Description={Description}
       dataDownloaderFileStem={dataDownloaderFileStem}
+      configAPI={configAPI}
     />
   );
 }

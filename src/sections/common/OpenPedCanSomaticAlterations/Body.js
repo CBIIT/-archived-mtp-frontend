@@ -12,7 +12,8 @@ import FusionByGeneTab from './FusionByGeneTab';
 import FusionTab from './FusionTab';
 import { getSADefaultTab } from './utils'
 
-function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryRequest, Description, dataDownloaderFileStem}) {
+function Body({ definition, id, label, entity, variables, BODY_QUERY,
+  summaryRequest, Description, dataDownloaderFileStem, configAPI }) {
 
   const request = useQuery(BODY_QUERY, {
     variables: { ...variables, size: 9999 },
@@ -70,7 +71,8 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={snvByGene.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configAPI={`${configAPI}/SnvByGene_Config.json`} /> }
 
             {/* table 2: SNV by Variant */}
             { tab === "snvByVariant" && snvByVariant.evidences.count > 0 && 
@@ -78,7 +80,8 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={snvByVariant.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configAPI={`${configAPI}/SnvByVariant_Config.json`} /> }
 
             {/* table 3: CNV by Gene*/}
             { tab === "cnvByGene" && cnvByGene.evidences.count > 0 && 
@@ -87,7 +90,7 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
                   dataDownloaderFileStem={dataDownloaderFileStem}
-                   /> }
+                  configAPI={`${configAPI}/CnvByGene_Config.json`} /> }
 
             {/* table 4: Fusion by Gene*/}
             { tab === "fusionByGene" && fusionByGene.evidences.count > 0 && 
@@ -95,7 +98,8 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={fusionByGene.evidences.rows}
                   dataDownloaderFileStem={dataDownloaderFileStem}
                   BODY_QUERY={BODY_QUERY}
-                  variables={variables} /> }
+                  variables={variables}
+                  configAPI={`${configAPI}/FusionByGene_Config.json`} /> }
 
             {/* table 5: Fusion */}
             { tab === "fusion" && fusion.evidences.count > 0 && 
@@ -103,7 +107,8 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={fusion.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configAPI={`${configAPI}/Fusion_Config.json`} /> }
           </>
         );
       }}
