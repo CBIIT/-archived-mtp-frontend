@@ -4,6 +4,7 @@ import SectionItem from '../../../components/Section/SectionItem';
 import DataDownloader from '../../../components/Table/DataDownloader';
 import { dataTypesMap } from '../../../dataTypes';
 import { fetchConfigObj, interpretConfig } from './utils';
+import useColumnConfiguration from '../../../hooks/useColumnConfiguration';
 
 function Body({ definition, id, label, getData, getPlot, Description, entity, fileStem, imageAlt, configAPI }) {
 
@@ -105,18 +106,7 @@ function Body({ definition, id, label, getData, getPlot, Description, entity, fi
     { id: 'specimen_descriptor_fill'},
     { id: 'box_sample_count'}
   ]
-  const [configDataDownloaderColumns, setConfigDataDownloaderColumns] = useState([])
-  // Fetch and Interpret Config File
-  useEffect(()=>{
-    fetchConfigObj(configAPI).then(
-         response => {
-           // Interpret Config file
-           const interpretedObj = interpretConfig(response)
-           setConfigDataDownloaderColumns(interpretedObj.dataDownloaderColumns)
-         }
-       )
-   }, [configAPI])
-
+  const [configDataDownloaderColumns] = useColumnConfiguration(configAPI, true)
   return   (
       <SectionItem
         definition={definition}

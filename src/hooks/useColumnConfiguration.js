@@ -4,8 +4,8 @@ import {
   addColumnCustomFields, 
   fetchConfigObj } from '../sections/common/OpenPedCanSomaticAlterations/utils';
 
-export default function useColumnConfiguration(configAPI) {
-  const [Columns, setColumns] = useState([]);
+export default function useColumnConfiguration(configAPI, onlyExportedColumn=false) {
+  const [columns, setColumns] = useState([]);
   const [dataDownloaderColumns, setDataDownloaderColumns] = useState([]);
 
   useEffect(()=>{
@@ -19,5 +19,5 @@ export default function useColumnConfiguration(configAPI) {
        )
    }, [configAPI]);
 
-   return [Columns, dataDownloaderColumns];
+   return onlyExportedColumn ? [ dataDownloaderColumns ] : [ columns, dataDownloaderColumns ]
 }
