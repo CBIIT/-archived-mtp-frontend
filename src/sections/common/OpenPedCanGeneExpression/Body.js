@@ -3,7 +3,6 @@ import { Tab, Tabs, Grid, makeStyles} from '@material-ui/core';
 import SectionItem from '../../../components/Section/SectionItem';
 import DataDownloader from '../../../components/Table/DataDownloader';
 import { dataTypesMap } from '../../../dataTypes';
-import { fetchConfigObj, interpretConfig } from './utils';
 import useColumnConfiguration from '../../../hooks/useColumnConfiguration';
 
 function Body({ definition, id, label, getData, getPlot, Description, entity, fileStem, imageAlt, configAPI }) {
