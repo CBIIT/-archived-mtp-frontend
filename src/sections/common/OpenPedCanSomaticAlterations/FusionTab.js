@@ -75,16 +75,17 @@ const dataDownloaderColumns = [
   { id: 'frequencyInRelapseTumors' },
 ]
 
-function FusionTab({ data, BODY_QUERY, variables, dataDownloaderFileStem }) {
+function FusionTab({
+  data, BODY_QUERY, variables, dataDownloaderFileStem, configColumns, configDataDownloaderColumns }) {
   // Set a minimum column width
   addCustomFields(columns)
   return (
     <Grid container>
       <Grid item xs={12}>
         <DataTable
-          dataDownloaderColumns={dataDownloaderColumns}
+          dataDownloaderColumns={ configDataDownloaderColumns || dataDownloaderColumns}
           dataDownloaderFileStem={dataDownloaderFileStem}
-          columns={columns}
+          columns={ configColumns || columns}
           rows={data}
           dataDownloader
           showGlobalFilter
