@@ -11,7 +11,7 @@ const createExternalLink = (url, description) => {
   const link = url ? <Link external to={url}> {description} </Link> : '' 
   return link; 
 }
-
+// TODO: Remove Once Config automation is complete
 // Configuration for how the tables will display the data
 let columns = [
   {
@@ -52,8 +52,8 @@ let columns = [
     filterValue:({pedcbioPedotMutationsPlotURL}) => pedcbioPedotMutationsPlotURL ? 'mutations' : ''
   },
 ]
-
-const dataDownloaderColumns = [
+// TODO: Remove Once Config automation is complete
+let dataDownloaderColumns = [
   { id: 'geneSymbol' },
   { id: 'PMTL' },
   { id: 'dataset' },
@@ -77,16 +77,18 @@ const dataDownloaderColumns = [
   { id: 'pedcbioPedotMutationsPlotURL', exportLabel: 'pedcbioPedotMutationPlot' },
 ]
 
-function SnvByGeneTab({ data, BODY_QUERY, variables, dataDownloaderFileStem }) {
-  // Set a minimum column width
-  addCustomFields(columns)
+function SnvByGeneTab({
+  data, BODY_QUERY, variables, dataDownloaderFileStem, configColumns, configDataDownloaderColumns }) {
+ // Set a minimum column width
+ addCustomFields(columns)
+
   return (
     <Grid container>
       <Grid item xs={12}>
         <DataTable
-          dataDownloaderColumns={dataDownloaderColumns}
+          dataDownloaderColumns={configDataDownloaderColumns || dataDownloaderColumns}
           dataDownloaderFileStem={dataDownloaderFileStem}
-          columns={columns}
+          columns={configColumns || columns}
           rows={data}
           dataDownloader
           showGlobalFilter
@@ -98,7 +100,7 @@ function SnvByGeneTab({ data, BODY_QUERY, variables, dataDownloaderFileStem }) {
           stickyHeader
           noWrap={false}
         />
-      </Grid> 
+      </Grid>
     </Grid>
   )
 }
