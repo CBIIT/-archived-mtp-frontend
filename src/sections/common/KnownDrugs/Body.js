@@ -72,7 +72,8 @@ function getColumnPool(id, entity) {
           renderCell: ({ drug: { mechanismsOfAction }, target }) => {
             if (!mechanismsOfAction) return naLabel;
             const at = new Set();
-            const targetId = entity === 'target' ? id : target!==null? target.id :null;
+            const targetId =
+              entity === 'target' ? id : target !== null ? target.id : null;
             mechanismsOfAction.rows.forEach(row => {
               row.targets.forEach(t => {
                 if (t.id === targetId) {
@@ -110,13 +111,13 @@ function getColumnPool(id, entity) {
           label: 'Symbol',
           propertyPath: 'target.approvedSymbol',
           renderCell: d => {
-
-            if(d.target!==null){
+            if (d.target !== null) {
               return (
-            <Link to={`/target/${d.target.id}`}>{d.target.approvedSymbol}</Link>
-          )
+                <Link to={`/target/${d.target.id}`}>
+                  {d.target.approvedSymbol}
+                </Link>
+              );
             }
-            
           },
         },
         {
@@ -125,9 +126,9 @@ function getColumnPool(id, entity) {
           propertyPath: 'target.approvedName',
           hidden: ['lgDown'],
           renderCell: d => {
-            if(d.target!==null){
+            if (d.target !== null) {
               return d.target.approvedName;
-          }
+            }
           },
         },
       ],

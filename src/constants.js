@@ -307,13 +307,13 @@ export const studySourceMap = {
 };
 
 export const contact = {
-  email: 'ncichildhoodcancerdatainitiative@mail.nih.gov'
-}
+  email: 'ncichildhoodcancerdatainitiative@mail.nih.gov',
+};
 
 export const version = {
   frontend: config.frontendVersion,
-  frontendURL: "https://github.com/CBIIT/ppdc-otp-frontend/releases",
+  frontendURL: 'https://github.com/CBIIT/ppdc-otp-frontend/releases',
   backend: config.backendVersion,
-  backendURL: "https://github.com/CBIIT/ppdc-otp-backend/releases",
-  changeLogPage: "/change-log"
-}
+  backendURL: 'https://github.com/CBIIT/ppdc-otp-backend/releases',
+  changeLogPage: '/change-log',
+};

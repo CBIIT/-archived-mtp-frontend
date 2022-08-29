@@ -15,7 +15,7 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-function SectionMenu({ sections, onSectionReorder}) {
+function SectionMenu({ sections, onSectionReorder }) {
   const classes = navPanelStyles();
 
   const handleSectionDrop = result => {

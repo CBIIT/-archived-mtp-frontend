@@ -1,12 +1,12 @@
-import { gql } from "graphql.macro"
+import { gql } from 'graphql.macro';
 
-export const globalQuery = gql` 
+export const globalQuery = gql`
   query GlobalQuery {
     meta {
       mtpVersion {
         version
       }
-      dataVersion{
+      dataVersion {
         year
         month
         iteration

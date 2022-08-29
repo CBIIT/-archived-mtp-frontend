@@ -28,7 +28,8 @@ function TargetPage({ location, match }) {
     return <NotFoundPage />;
   }
 
-  const { approvedSymbol: symbol, approvedName, pmtl_fda_designation: pmtl } = data?.target || {};
+  const { approvedSymbol: symbol, approvedName, pmtl_fda_designation: pmtl } =
+    data?.target || {};
   const uniprotIds = loading ? null : getUniprotIds(data.target.proteinIds);
   const crisprId = data?.target.dbXrefs.find(p => p.source === 'ProjectScore')
     ?.id;

@@ -1,6 +1,6 @@
 // MTP Section imports
 import * as OpenPedCanGeneExpression from '../../sections/evidence/OpenPedCanGeneExpression';
-import * as OpenPedCanSomaticAlterations from '../../sections/evidence/OpenPedCanSomaticAlterations'
+import * as OpenPedCanSomaticAlterations from '../../sections/evidence/OpenPedCanSomaticAlterations';
 // Section imports
 import * as CancerGeneCensus from '../../sections/evidence/CancerGeneCensus';
 import * as Chembl from '../../sections/evidence/Chembl';

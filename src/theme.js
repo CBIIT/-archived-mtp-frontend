@@ -77,9 +77,9 @@ const theme = {
       },
     },
     Mui: {
-      disabled : {
-          color : 'black !important'
-      }
+      disabled: {
+        color: 'black !important',
+      },
     },
     MuiTab: {
       root: {
@@ -94,9 +94,9 @@ const theme = {
       },
       textColorInherit: {
         color: 'rgb(52, 137, 202)',
-        '&.Mui-disabled':{
+        '&.Mui-disabled': {
           color: '#9e9e9e !important',
-        }
+        },
       },
     },
     MuiTypography: {
@@ -141,7 +141,7 @@ const theme = {
     paper: {
       marginTop: '232px',
       height: 'calc(100% - 232px)',
-    }
+    },
   },
   zIndex: {
     navBar: 1002,
@@ -149,8 +149,8 @@ const theme = {
   },
   header: {
     height: '159px', // 100px for NCILogoBar and 59px for NCINavBar
-    spacing: '52px' // spacing below the header
-  }
+    spacing: '52px', // spacing below the header
+  },
 };
 
 export default theme;

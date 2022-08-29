@@ -36,7 +36,10 @@ function Legend() {
           1
         </div>
       </div>
-      <Link href="https://platform-docs.opentargets.org/associations#association-scores" target="_blank">
+      <Link
+        href="https://platform-docs.opentargets.org/associations#association-scores"
+        target="_blank"
+      >
         <FontAwesomeIcon icon={faQuestionCircle} size="xs" /> Score
       </Link>
     </div>

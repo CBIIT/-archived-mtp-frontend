@@ -3,13 +3,13 @@ import { Helmet } from 'react-helmet';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 
 import NCIHeader from '../../components/NCIHeader';
-import NCIFooter from '../../components/NCIFooter'
+import NCIFooter from '../../components/NCIFooter';
 import { appTitle, appDescription, appCanonicalUrl } from '../../constants';
 import cn from '../../components/helpers/classNameConcat';
 import Link from '../../components/Link';
 
-const blurRadius = 5
-const shadowColor = '#035BA2'
+const blurRadius = 5;
+const shadowColor = '#035BA2';
 
 const styles = makeStyles(theme => ({
   page: {
@@ -39,7 +39,7 @@ const styles = makeStyles(theme => ({
                 -1px -1px ${blurRadius}px ${shadowColor},
                 1px -1px ${blurRadius}px ${shadowColor}, 
                 -1px 1px ${blurRadius}px ${shadowColor},
-                0px 0px ${blurRadius}px ${shadowColor}`
+                0px 0px ${blurRadius}px ${shadowColor}`,
   },
   fFour: {
     color: '#E0F4FC',
@@ -55,14 +55,14 @@ const styles = makeStyles(theme => ({
     fontWeight: '600',
     lineHeight: '45px',
     color: '#00344F',
-    marginTop: '8px'
+    marginTop: '8px',
   },
   pageNotFoundInfo: {
     fontSize: '16px',
     lineHeight: '25px',
     color: '#00344F',
     marginTop: '25px',
-    marginBottom: '186px'
+    marginBottom: '186px',
   },
   goBackHome: {
     color: 'black',
@@ -71,7 +71,7 @@ const styles = makeStyles(theme => ({
     },
     fontWeight: 'bold',
   },
-  "@media (max-width: 900px)": {
+  '@media (max-width: 900px)': {
     four0four: {
       fontSize: '250px',
       lineHeight: '250px',
@@ -82,7 +82,7 @@ const styles = makeStyles(theme => ({
       lineHeight: '45px',
     },
   },
-  "@media (max-width: 650px)": {
+  '@media (max-width: 650px)': {
     four0four: {
       fontSize: '150px',
       lineHeight: '150px',
@@ -92,13 +92,13 @@ const styles = makeStyles(theme => ({
       fontWeight: '600',
       lineHeight: '45px',
     },
-  }
+  },
 }));
-const MTPNotFoundPage = ({location}) => {
-  const classes = styles()
+const MTPNotFoundPage = ({ location }) => {
+  const classes = styles();
   return (
     <div className={classes.page}>
-      <NCIHeader/>
+      <NCIHeader />
       <Grid
         container
         justify={'center'}
@@ -108,32 +108,30 @@ const MTPNotFoundPage = ({location}) => {
         <Grid item xs={12} md={11}>
           <Helmet title={appTitle}>
             <meta name="description" content={appDescription} />
-            <link
-              rel="canonical"
-              href={appCanonicalUrl + (location || '')}
-            />
+            <link rel="canonical" href={appCanonicalUrl + (location || '')} />
           </Helmet>
-          <Typography align='center'>
+          <Typography align="center">
             <span className={cn(classes.four0four, classes.fFour)}>4</span>
             <span className={cn(classes.four0four, classes.zero)}>0</span>
             <span className={cn(classes.four0four, classes.lFour)}>4</span>
-        
-            <p className={classes.pageNotFound}>
-              Page not found.
-            </p>
+
+            <p className={classes.pageNotFound}>Page not found.</p>
 
             <p className={classes.pageNotFoundInfo}>
-              The page you are looking for does not exist or another error has occurred. <br/>
-              Go back or head 
-              <Link to="/" className={classes.goBackHome}> home </Link> 
+              The page you are looking for does not exist or another error has
+              occurred. <br />
+              Go back or head
+              <Link to="/" className={classes.goBackHome}>
+                {' '}
+                home{' '}
+              </Link>
               to choose another direction.
             </p>
           </Typography>
         </Grid>
       </Grid>
-      <NCIFooter/>
+      <NCIFooter />
     </div>
-
   );
 };
 

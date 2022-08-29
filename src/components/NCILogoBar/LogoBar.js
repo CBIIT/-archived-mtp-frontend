@@ -2,11 +2,11 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 import RouteLinks from '../helpers/routeLinks';
 
-const styles = ()=>({
+const styles = () => ({
   grow: {
     flexGrow: 3,
   },
-  headerBar: (props) => {
+  headerBar: props => {
     const defaultProps = {
       color: '#8A95A7',
       width: '100%',
@@ -28,15 +28,16 @@ const styles = ()=>({
     display: 'flex',
     width: '100%',
     paddingLeft: '24px',
-    marginLeft: (props) => props.customStyle.icdcLogoContainerMarginLeft || 'auto',
-    background: (props) => `url(${props.easter})` || '',
+    marginLeft: props =>
+      props.customStyle.icdcLogoContainerMarginLeft || 'auto',
+    background: props => `url(${props.easter})` || '',
     overflow: 'hidden',
     '@media (min-width: 2400px)': {
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 100%',
     },
   },
-  nihLogoImg: (props) => {
+  nihLogoImg: props => {
     const defaultProps = {
       minWidth: '200px',
       minHeight: '60px',
@@ -45,27 +46,26 @@ const styles = ()=>({
       cursor: 'pointer',
       marginLeft: '45px',
       float: 'left',
-      "@media (max-width: 1133px)":{
+      '@media (max-width: 1133px)': {
         width: '405px',
         marginLeft: '-3px',
       },
-      "@media (max-width: 400px)":{
+      '@media (max-width: 400px)': {
         width: '350px',
         marginLeft: '10px',
       },
-      "@media (max-width: 355px)":{
+      '@media (max-width: 355px)': {
         width: '300px',
         marginLeft: '11px',
       },
-      "@media (max-width: 310px)":{
+      '@media (max-width: 310px)': {
         width: '260px',
         marginLeft: '12px',
       },
-      "@media (max-width: 274px)":{
+      '@media (max-width: 274px)': {
         width: '230px',
         marginLeft: '15px',
       },
-
     };
     return Object.assign(defaultProps, props.customStyle.nihLogoImg);
   },
@@ -77,11 +77,7 @@ const NCILogo = ({ classes, ...props }) => {
     <div id="header" className={classes.headerBar}>
       <div className={classes.nihLogoContainer}>
         <RouteLinks to={homeLink}>
-          <img
-            className={classes.nihLogoImg}
-            src={logo}
-            alt={alt}
-          />
+          <img className={classes.nihLogoImg} src={logo} alt={alt} />
         </RouteLinks>
       </div>
       <div className={classes.icdcLogoContainer}>
@@ -90,7 +86,5 @@ const NCILogo = ({ classes, ...props }) => {
     </div>
   );
 };
-
-
 
 export default withStyles(styles)(NCILogo);

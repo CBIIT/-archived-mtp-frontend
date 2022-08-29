@@ -5,6 +5,6 @@
  * @param {...string} args
  * @return {string[]}
  */
-const cn = (...args) => args.filter((klass) => klass).join(' ');
+const cn = (...args) => args.filter(klass => klass).join(' ');
 
 export default cn;

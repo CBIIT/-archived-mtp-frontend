@@ -19,7 +19,6 @@ import { fetcher } from '../../utils/global';
 import Link from '../Link';
 import ExternalLinkIcon from '../ExternalLinkIcon';
 
-
 // lazy load GraphiQL and remove Logo and Toolbar
 const GraphiQL = lazy(() =>
   import('graphiql').then(module => {
@@ -153,7 +152,14 @@ const styles = makeStyles(theme => ({
   },
 }));
 
-function DataDownloader({ columns, rows, fileStem, captionLabel="Download table as", query, variables }) {
+function DataDownloader({
+  columns,
+  rows,
+  fileStem,
+  captionLabel = 'Download table as',
+  query,
+  variables,
+}) {
   const [downloading, setDownloading] = useState(false);
   const [open, setOpen] = useState(false);
   const classes = styles();
@@ -261,11 +267,13 @@ function DataDownloader({ columns, rows, fileStem, captionLabel="Download table 
             external
             to="https://platform-docs.opentargets.org/data-access/graphql-api"
           >
-            GraphQL API documentation<ExternalLinkIcon/>
+            GraphQL API documentation
+            <ExternalLinkIcon />
           </Link>{' '}
           and{' '}
           <Link external to="https://community.opentargets.org">
-            Community<ExternalLinkIcon/>
+            Community
+            <ExternalLinkIcon />
           </Link>{' '}
           for more how-to guides and tutorials.
         </Paper>

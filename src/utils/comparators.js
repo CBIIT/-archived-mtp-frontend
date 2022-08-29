@@ -42,16 +42,20 @@ export const breakpointMatch = (breakpoint, breakpointHelper) => {
  *          0 if both property are equal
  * property type can be number or string
  */
-export const genericComparator = (row1, row2, keyName, number=false) => {
-  let a = row1[keyName], b = row2[keyName];
+export const genericComparator = (row1, row2, keyName, number = false) => {
+  let a = row1[keyName],
+    b = row2[keyName];
   if (number) {
     // Empty column value will be assign as -1
-    a = parseFloat(a || -1); 
+    a = parseFloat(a || -1);
     b = parseFloat(b || -1);
-  } else if ((typeof row1[keyName] === 'string') && (typeof row2[keyName] === 'string')) {
+  } else if (
+    typeof row1[keyName] === 'string' &&
+    typeof row2[keyName] === 'string'
+  ) {
     a = row1[keyName].toLowerCase();
     b = row2[keyName].toLowerCase();
   }
-  
+
   return a < b ? -1 : a > b ? 1 : 0;
-}
+};

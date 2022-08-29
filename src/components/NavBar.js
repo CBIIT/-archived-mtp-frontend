@@ -50,7 +50,6 @@ const styles = theme => ({
   },
 });
 
-
 const NavBar = ({
   classes,
   name,
