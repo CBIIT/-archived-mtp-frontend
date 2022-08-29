@@ -11,14 +11,36 @@ import CnvByGeneTab from './CnvByGeneTab';
 import FusionByGeneTab from './FusionByGeneTab';
 import FusionTab from './FusionTab';
 import { getSADefaultTab } from './utils'
+import useColumnConfiguration from '../../../hooks/useColumnConfiguration';
 
-function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryRequest, Description, dataDownloaderFileStem}) {
+function Body({ definition, id, label, entity, variables, BODY_QUERY,
+  summaryRequest, Description, dataDownloaderFileStem, configAPI }) {
 
   const request = useQuery(BODY_QUERY, {
     variables: { ...variables, size: 9999 },
   });
   const defaultTab = getSADefaultTab(summaryRequest.data);
   const [tab, setTab] = useState(defaultTab);
+
+  // Config Columns for SNV By Gene
+  const [snvByGeneColumns, snvByGeneDataDownloaderColumns] =
+    useColumnConfiguration(`${configAPI}/SnvByGene_Config.json`)
+
+  // Config Columns for SNV By Variant
+  const [snvByVariantColumns, snvByVariantDataDownloaderColumns] =
+    useColumnConfiguration(`${configAPI}/SnvByVariant_Config.json`)
+
+  // Config Columns for CNV By Gene
+  const [cnvByGeneColumns, cnvByGeneDataDownloaderColumns] =
+    useColumnConfiguration(`${configAPI}/CnvByGene_Config.json`)
+
+  // Config Columns for Fusion By Gene
+  const [fusionByGeneColumns, fusionByGeneDataDownloaderColumns] =
+    useColumnConfiguration(`${configAPI}/FusionByGene_Config.json`)
+
+  // Config Columns for Fusion
+  const [fusionColumns, fusionDataDownloaderColumns] =
+    useColumnConfiguration(`${configAPI}/Fusion_Config.json`)
 
 
  const useStyles = makeStyles({
@@ -70,7 +92,9 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={snvByGene.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configColumns={snvByGeneColumns}
+                  configDataDownloaderColumns={snvByGeneDataDownloaderColumns} /> }
 
             {/* table 2: SNV by Variant */}
             { tab === "snvByVariant" && snvByVariant.evidences.count > 0 && 
@@ -78,7 +102,9 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={snvByVariant.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configColumns={snvByVariantColumns}
+                  configDataDownloaderColumns={snvByVariantDataDownloaderColumns} /> }
 
             {/* table 3: CNV by Gene*/}
             { tab === "cnvByGene" && cnvByGene.evidences.count > 0 && 
@@ -87,7 +113,8 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
                   dataDownloaderFileStem={dataDownloaderFileStem}
-                   /> }
+                  configColumns={cnvByGeneColumns}
+                  configDataDownloaderColumns={cnvByGeneDataDownloaderColumns} /> }
 
             {/* table 4: Fusion by Gene*/}
             { tab === "fusionByGene" && fusionByGene.evidences.count > 0 && 
@@ -95,7 +122,9 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={fusionByGene.evidences.rows}
                   dataDownloaderFileStem={dataDownloaderFileStem}
                   BODY_QUERY={BODY_QUERY}
-                  variables={variables} /> }
+                  variables={variables}
+                  configColumns={fusionByGeneColumns}
+                  configDataDownloaderColumns={fusionByGeneDataDownloaderColumns} /> }
 
             {/* table 5: Fusion */}
             { tab === "fusion" && fusion.evidences.count > 0 && 
@@ -103,7 +132,9 @@ function Body({ definition, id, label, entity, variables, BODY_QUERY, summaryReq
                   data={fusion.evidences.rows}
                   BODY_QUERY={BODY_QUERY}
                   variables={variables}
-                  dataDownloaderFileStem={dataDownloaderFileStem} /> }
+                  dataDownloaderFileStem={dataDownloaderFileStem}
+                  configColumns={fusionColumns}
+                  configDataDownloaderColumns={fusionDataDownloaderColumns} /> }
           </>
         );
       }}

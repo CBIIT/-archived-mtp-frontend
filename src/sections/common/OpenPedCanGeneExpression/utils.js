@@ -20,3 +20,23 @@ export const setDisplaySettingForExternal = (flag, definitionKey, displaySetting
     }
   }
 }
+/* 
+  Given configuration file, This function will interpret and return dataDownloaderColumns 
+  that is compatitable to the Table component
+*/
+export const interpretConfig = (config) => {
+  let interpretedConfig = { dataDownloaderColumns: [] }
+
+  config.forEach(c => {
+    const dataDownloaderColumns = { id: c.id }
+    if (c.exportLabel) {
+      dataDownloaderColumns.exportLabel = c.exportLabel
+    }
+    interpretedConfig.dataDownloaderColumns.push(dataDownloaderColumns)
+  })
+  return interpretedConfig
+}
+ 
+export function fetchConfigObj(apiURL) {
+  return fetch(apiURL).then(res => res.json());
+};
