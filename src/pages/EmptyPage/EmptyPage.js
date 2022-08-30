@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid, Typography, withStyles } from '@material-ui/core';
-import {
-  faExclamationTriangle,
-} from '@fortawesome/free-solid-svg-icons';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Link from '../../components/Link';

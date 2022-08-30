@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { Paper, Box, Typography, TextField, Link as Lk } from '@material-ui/core';
+import {
+  Paper,
+  Box,
+  Typography,
+  TextField,
+  Link as Lk,
+} from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -69,17 +75,21 @@ function getColumns(
       renderCell: row => {
         const ensemblID = row.ensemblID;
         const url = '/target/' + ensemblID;
-        return ensemblID !== "Symbol_Not_Found" ?
-          (<Link to={url} external>{row.targetSymbol}</Link>) :
-          (<p> {row.targetSymbol} </p>)
+        return ensemblID !== 'Symbol_Not_Found' ? (
+          <Link to={url} external>
+            {row.targetSymbol}
+          </Link>
+        ) : (
+          <p> {row.targetSymbol} </p>
+        );
       },
       renderFilter: () => (
-        <TextField 
-            label="Search..." 
-            margin="normal" 
-            fullWidth
-            onChange={(event, newValue) => {
-            targetSymbolFilterHandler(event,event.target);
+        <TextField
+          label="Search..."
+          margin="normal"
+          fullWidth
+          onChange={(event, newValue) => {
+            targetSymbolFilterHandler(event, event.target);
           }}
         />
       ),
@@ -132,12 +142,12 @@ function getColumns(
       id: 'fdaTarget',
       label: 'FDA Target',
       renderFilter: () => (
-        <TextField 
-            fullWidth
-            label="Search..." 
-            margin="normal" 
-            onChange={(event, newValue) => {
-            fdaTargetFilterHandler(event,event.target);
+        <TextField
+          fullWidth
+          label="Search..."
+          margin="normal"
+          onChange={(event, newValue) => {
+            fdaTargetFilterHandler(event, event.target);
           }}
         />
       ),
@@ -226,19 +236,25 @@ class PMTLPage extends Component {
   // Generic Function to handle column filtering
   columnFilterHandlerStartsWith = (e, selection, rmtlXf, columnDim) => {
     if (selection) {
-      columnDim.filter(d => d.toUpperCase().startsWith(selection.value.toUpperCase()));
+      columnDim.filter(d =>
+        d.toUpperCase().startsWith(selection.value.toUpperCase())
+      );
     } else {
       columnDim.filterAll();
     }
 
     this.setState({ filteredRows: rmtlXf.allFiltered() });
   };
-
 
   // Generic Function to handle column filtering
-  columnFilterHandlerParticalMatch  = (e, selection, rmtlXf, columnDim) => {
+  columnFilterHandlerParticalMatch = (e, selection, rmtlXf, columnDim) => {
     if (selection) {
-      columnDim.filter(d => " ".concat(d.toUpperCase()).indexOf(" ".concat(selection.value.toUpperCase()))!==-1);
+      columnDim.filter(
+        d =>
+          ' '
+            .concat(d.toUpperCase())
+            .indexOf(' '.concat(selection.value.toUpperCase())) !== -1
+      );
     } else {
       columnDim.filterAll();
     }
@@ -246,9 +262,7 @@ class PMTLPage extends Component {
     this.setState({ filteredRows: rmtlXf.allFiltered() });
   };
 
-
-
-    // Generic Function to handle column filtering
+  // Generic Function to handle column filtering
   columnFilterHandlerExact = (e, selection, rmtlXf, columnDim) => {
     if (selection) {
       columnDim.filter(d => d === selection.value);
@@ -260,11 +274,21 @@ class PMTLPage extends Component {
   };
 
   targetSymbolFilterHandler = (e, selection) => {
-    this.columnFilterHandlerStartsWith(e, selection, this.rmtlXf, this.targetSymbolDim);
+    this.columnFilterHandlerStartsWith(
+      e,
+      selection,
+      this.rmtlXf,
+      this.targetSymbolDim
+    );
   };
 
   designationFilterHandler = (e, selection) => {
-    this.columnFilterHandlerExact(e, selection, this.rmtlXf, this.designationDim);
+    this.columnFilterHandlerExact(
+      e,
+      selection,
+      this.rmtlXf,
+      this.designationDim
+    );
   };
 
   fdaClassFilterHandler = (e, selection) => {
@@ -272,11 +296,21 @@ class PMTLPage extends Component {
   };
 
   fdaTargetFilterHandler = (e, selection) => {
-    this.columnFilterHandlerParticalMatch(e, selection, this.rmtlXf, this.fdaTargetDim);
+    this.columnFilterHandlerParticalMatch(
+      e,
+      selection,
+      this.rmtlXf,
+      this.fdaTargetDim
+    );
   };
 
   mappingDescriptionFilterHandler = (e, selection) => {
-    this.columnFilterHandlerExact(e, selection, this.rmtlXf, this.mappingDescriptionDim);
+    this.columnFilterHandlerExact(
+      e,
+      selection,
+      this.rmtlXf,
+      this.mappingDescriptionDim
+    );
   };
 
   componentDidMount() {
@@ -285,7 +319,9 @@ class PMTLPage extends Component {
     this.designationDim = this.rmtlXf.dimension(row => row.designation);
     this.fdaClassDim = this.rmtlXf.dimension(row => row.fdaClass);
     this.fdaTargetDim = this.rmtlXf.dimension(row => row.fdaTarget);
-    this.mappingDescriptionDim = this.rmtlXf.dimension(row => row.mappingDescription);
+    this.mappingDescriptionDim = this.rmtlXf.dimension(
+      row => row.mappingDescription
+    );
   }
 
   handleRowsPerPageChange = newPageSize => {
@@ -337,10 +373,15 @@ class PMTLPage extends Component {
         <hr />
         <br />
         <Typography paragraph>
-          Targets in the FDA's Pediatric Molecular Target Lists (PMTL) are important for studies
-          of pediatric cancer and have special legal requirements associated with drug development.
-          The table below is a computable interpretation of the target lists published by the FDA.
-          See our  <Link to={FDA_PMTL_DocumentationUrl}> <b>FDA PMTL Documentation </b></Link>
+          Targets in the FDA's Pediatric Molecular Target Lists (PMTL) are
+          important for studies of pediatric cancer and have special legal
+          requirements associated with drug development. The table below is a
+          computable interpretation of the target lists published by the FDA.
+          See our{' '}
+          <Link to={FDA_PMTL_DocumentationUrl}>
+            {' '}
+            <b>FDA PMTL Documentation </b>
+          </Link>
           or the official{' '}
           <Link external to={FDA_Publication}>
             <b>FDA publication</b>
@@ -366,7 +407,8 @@ class PMTLPage extends Component {
                   href="/fda-pmtl-docs#colums-description"
                   title="FDA PMTL Columns Description"
                 >
-                  <FontAwesomeIcon icon={faInfoCircle} size="md" /> Columns Description
+                  <FontAwesomeIcon icon={faInfoCircle} size="md" /> Columns
+                  Description
                 </Lk>
                 <DataDownloader
                   tableHeaders={downloadColumns}

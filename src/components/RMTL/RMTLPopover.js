@@ -70,8 +70,8 @@ function RMTLPopOver({ otherStyle, pmtl }) {
 
   const classes = useStyles();
   // icon will update depending if a Target is RMT, NonRMT or UnspecifyTarget
-  const {fdaDesignation, defaultTab, icon: pmtlIcon} = PMTLHelper(pmtl)
-  const [tab, setTab] = useState("");
+  const { fdaDesignation, defaultTab, icon: pmtlIcon } = PMTLHelper(pmtl);
+  const [tab, setTab] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);

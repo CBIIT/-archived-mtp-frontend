@@ -6,16 +6,16 @@ const useStyles = makeStyles({
   exLinkIcon: {
     width: '20px',
     margin: '0 0 0 2px',
-    verticalAlign: 'sub'
+    verticalAlign: 'sub',
   },
 });
 
 const ExternalLinkIcon = ({ className }) => {
   const classes = useStyles();
   return (
-    <img 
-      src={exLinkIcon} 
-      alt="outbounnd web site icon" 
+    <img
+      src={exLinkIcon}
+      alt="outbounnd web site icon"
       className={className ? className : classes.exLinkIcon}
     />
   );

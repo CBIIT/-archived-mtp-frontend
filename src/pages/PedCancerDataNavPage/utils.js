@@ -1,26 +1,26 @@
 import React from 'react';
-import {Check as CheckIcon } from '@material-ui/icons';
-import { isEmpty as  _isEmpty} from 'lodash';
+import { Check as CheckIcon } from '@material-ui/icons';
+import { isEmpty as _isEmpty } from 'lodash';
 
-export const GreenCheckIcon = () =>{ 
-  return <CheckIcon style={{color:"Green"}}/>
-}
+export const GreenCheckIcon = () => {
+  return <CheckIcon style={{ color: 'Green' }} />;
+};
 
-export const isEmpty = (s) => {
-  let str = s.trim()
-  if(!str) return true
-  return _isEmpty(str)
-}
-export const inputSanitize = (input) => {
-  let result = input
-  if (input){
-    result = input.toLowerCase()
+export const isEmpty = s => {
+  let str = s.trim();
+  if (!str) return true;
+  return _isEmpty(str);
+};
+export const inputSanitize = input => {
+  let result = input;
+  if (input) {
+    result = input.toLowerCase();
     // remove whitespace from both ends of the input
-    result = result.trim()
+    result = result.trim();
   }
-  
+
   return result;
-}
+};
 /*
  * genericComparator: comparing row1 and row2 using the input keyName.
  * return: -1 if first string is lexicographically less than second property
@@ -39,4 +39,3 @@ export function genericComparator(row1, row2, keyName) {
 
   return a < b ? -1 : a > b ? 1 : 0;
 }
-

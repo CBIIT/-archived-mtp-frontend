@@ -1,13 +1,13 @@
 import React from 'react';
-import  LogoBar  from './LogoBar';
+import LogoBar from './LogoBar';
 
 const headerData = {
-  globalHeaderLogo: 'https://raw.githubusercontent.com/CBIIT/mtp-config/main/front-end/assets/images/CCDI-MT-Logo-COLOR.svg',
+  globalHeaderLogo:
+    'https://raw.githubusercontent.com/CBIIT/mtp-config/main/front-end/assets/images/CCDI-MT-Logo-COLOR.svg',
   globalHeaderLogoLink: '/',
   globalHeaderLogoAltText: 'MTP Logo',
   globalHeaderImage: '',
 };
-
 
 const customStyle = {
   nihLogoImg: {

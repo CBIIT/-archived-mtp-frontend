@@ -64,15 +64,16 @@ export const navBarData = [
     labelText: 'About Molecular Targets',
     type: 'dropdown',
     link: '/about',
-    dropDownLinks:[
-    {
-      labelText: 'About Molecular Targets',
-      link:'/about',
-    },
-    {
-      labelText: 'Change Log',
-      link:'/change-log',
-    }]
+    dropDownLinks: [
+      {
+        labelText: 'About Molecular Targets',
+        link: '/about',
+      },
+      {
+        labelText: 'Change Log',
+        link: '/change-log',
+      },
+    ],
   },
   {
     labelText: 'Pediatric Cancer Data Navigation',
@@ -82,13 +83,9 @@ export const navBarData = [
   },
 ];
 
-
 const NCINavBar = ({ cartFieldIds }) => (
   <>
-    <NavBar
-      navBarData={navBarData}
-      navBarstyling={navBarstyling}
-    />
+    <NavBar navBarData={navBarData} navBarstyling={navBarstyling} />
   </>
 );
 export default NCINavBar;

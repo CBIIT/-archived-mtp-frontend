@@ -4,7 +4,7 @@ import {
   Toolbar,
   withStyles,
   Popover,
-  IconButton
+  IconButton,
 } from '@material-ui/core';
 import cn from '../helpers/classNameConcat';
 import { Menu } from '@material-ui/icons';
@@ -12,15 +12,25 @@ import Close from '@material-ui/icons/Close';
 import { NavLink } from 'react-router-dom';
 
 const SmallerScreenNB = ({
-  classes, isSidebarOpened, navBarData, navBarstyling, innerWidth, innerHeight, anchorEl, setAnchorEl
+  classes,
+  isSidebarOpened,
+  navBarData,
+  navBarstyling,
+  innerWidth,
+  innerHeight,
+  anchorEl,
+  setAnchorEl,
 }) => {
-  // NavBar will be scrollable, If the window height is smaller than the Header and NavBar height 
-  const headerHeight = 185, NCINavBarHeight = 318
+  // NavBar will be scrollable, If the window height is smaller than the Header and NavBar height
+  const headerHeight = 185,
+    NCINavBarHeight = 318;
   const headerAndNavBarMinHeight = headerHeight + NCINavBarHeight;
-  const popoverHeight = 
-    innerHeight > headerAndNavBarMinHeight ? NCINavBarHeight : innerHeight - headerHeight
+  const popoverHeight =
+    innerHeight > headerAndNavBarMinHeight
+      ? NCINavBarHeight
+      : innerHeight - headerHeight;
 
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -30,22 +40,25 @@ const SmallerScreenNB = ({
 
   const open = Boolean(anchorEl);
   const id = open ? 'mobileExpandedViewMenu' : undefined;
-  
+
   return (
     <>
- 
       <AppBar
-      position="relative"
-      className={cn(classes.appBar, {
-        [classes.appBarShift]: isSidebarOpened,
-      })}
+        position="relative"
+        className={cn(classes.appBar, {
+          [classes.appBarShift]: isSidebarOpened,
+        })}
       >
         <Toolbar className={classes.mobileToolbar}>
           <IconButton
             aria-describedby={id}
             onClick={open ? handleClose : handleClick}
           >
-            {open ? <Close className={classes.mobileIcon}/> : <Menu className={classes.mobileIcon}/> }
+            {open ? (
+              <Close className={classes.mobileIcon} />
+            ) : (
+              <Menu className={classes.mobileIcon} />
+            )}
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -68,59 +81,77 @@ const SmallerScreenNB = ({
             boxShadow: 'none',
             width: innerWidth,
             maxWidth: innerWidth,
-            overflowY: 'auto', 
+            overflowY: 'auto',
             height: popoverHeight,
           },
-        }} 
+        }}
         className={classes.PopoverStyle}
       >
         <div>
           <ul className={classes.ulStyle}>
-            {
-              navBarData.slice(0, navBarData.length).map( (navItem, index) => ( 
-                navItem.type === "dropdown" 
-                ? 
-                  <Fragment key={"fragment" + index}>
-                    <li className={classes.liStyle} key={index}>
-                      <NavLink to={navItem.link} onClick={handleClose} className={classes.navLink}>
-                        {navItem.labelText}
-                      </NavLink>
-                    </li>
-                    <ul className={classes.ulStyle}>
-                      {navItem.dropDownLinks.slice(0, navItem.dropDownLinks.length).map((dropDownNavItem, dIndex) => 
-                        (
-                          <li className={classes.liStyle} key={index + '_' + dIndex}>
-                            <NavLink to={dropDownNavItem.link} onClick={handleClose} className={classes.navLink}>
-                              <span className={classes.greaterSign}>{'>'}</span> {dropDownNavItem.labelText}
-                            </NavLink>
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </Fragment>
-                : 
+            {navBarData.slice(0, navBarData.length).map((navItem, index) =>
+              navItem.type === 'dropdown' ? (
+                <Fragment key={'fragment' + index}>
                   <li className={classes.liStyle} key={index}>
-                    <NavLink to={navItem.link} onClick={handleClose} className={classes.navLink}>
+                    <NavLink
+                      to={navItem.link}
+                      onClick={handleClose}
+                      className={classes.navLink}
+                    >
                       {navItem.labelText}
                     </NavLink>
                   </li>
-              ))
-            }
+                  <ul className={classes.ulStyle}>
+                    {navItem.dropDownLinks
+                      .slice(0, navItem.dropDownLinks.length)
+                      .map((dropDownNavItem, dIndex) => (
+                        <li
+                          className={classes.liStyle}
+                          key={index + '_' + dIndex}
+                        >
+                          <NavLink
+                            to={dropDownNavItem.link}
+                            onClick={handleClose}
+                            className={classes.navLink}
+                          >
+                            <span className={classes.greaterSign}>{'>'}</span>{' '}
+                            {dropDownNavItem.labelText}
+                          </NavLink>
+                        </li>
+                      ))}
+                  </ul>
+                </Fragment>
+              ) : (
+                <li className={classes.liStyle} key={index}>
+                  <NavLink
+                    to={navItem.link}
+                    onClick={handleClose}
+                    className={classes.navLink}
+                  >
+                    {navItem.labelText}
+                  </NavLink>
+                </li>
+              )
+            )}
           </ul>
         </div>
       </Popover>
     </>
-  )
-}
+  );
+};
 
 const styles = () => ({
-  appBar: (props) => ({
-    backgroundColor: props.navBarstyling.global.backgroundColor ? props.navBarstyling.global.backgroundColor : '#142D64',
+  appBar: props => ({
+    backgroundColor: props.navBarstyling.global.backgroundColor
+      ? props.navBarstyling.global.backgroundColor
+      : '#142D64',
     width: '100vw',
     boxShadow: 'none',
   }),
-  mobileToolbar: (props) => ({
-    minHeight: props.navBarstyling.global.height ? props.navBarstyling.global.height : '59px',
+  mobileToolbar: props => ({
+    minHeight: props.navBarstyling.global.height
+      ? props.navBarstyling.global.height
+      : '59px',
     paddingLeft: '28px',
   }),
   ulStyle: {
@@ -137,7 +168,7 @@ const styles = () => ({
   },
   mobileIcon: {
     color: 'white',
-    fontSize: '40px'
+    fontSize: '40px',
   },
   navLink: {
     display: 'block',
@@ -149,14 +180,14 @@ const styles = () => ({
     borderBottom: '1px solid #2488D4',
     '&:hover': {
       backgroundColor: 'white',
-      color: "#0B3557",
+      color: '#0B3557',
       fontWeight: 'bold',
-    }
+    },
   },
   greaterSign: {
     padding: '0 10px 0 15px',
-  }
-})
+  },
+});
 
 SmallerScreenNB.defaultProps = {
   classes: {},

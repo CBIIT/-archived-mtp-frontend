@@ -182,7 +182,7 @@ const tableStyles = theme => ({
     marginTop: '7px',
   },
   hr: {
-    backgorund: theme.palette.grey[300]
+    backgorund: theme.palette.grey[300],
   },
 });
 
@@ -195,8 +195,8 @@ class OtTableRF extends Component {
 
   handleChangePage = (event, page) => {
     const { onPageSort, pageSize } = this.props;
-    window.scrollTo(0, document.getElementById('mtp-table').offsetTop-300);
-    this.setState({ page })
+    window.scrollTo(0, document.getElementById('mtp-table').offsetTop - 300);
+    this.setState({ page });
     if (onPageSort) {
       onPageSort({ page: page, pageSize: pageSize });
     }
@@ -227,16 +227,16 @@ class OtTableRF extends Component {
   * Change the rows per page and set back the page to 0.
   */
   handleChangeRowsPerPage = event => {
-    const { onRowsPerPageChange } = this.props
+    const { onRowsPerPageChange } = this.props;
     if (onRowsPerPageChange) {
       onRowsPerPageChange(event.target.value);
-      this.setState({ page: 0 })
+      this.setState({ page: 0 });
     }
   };
   componentDidUpdate(prevProps) {
     // Reset to the first page if data is updated.
-    if (prevProps.data !== this.props.data ) {
-      this.setState({page: 0})
+    if (prevProps.data !== this.props.data) {
+      this.setState({ page: 0 });
     }
   }
 
@@ -260,9 +260,9 @@ class OtTableRF extends Component {
       serverSide,
       totalRowsCount,
       rowsPerPageOptions = [], // Added this prop and gave option [] for existing component that do not have functionality to change the amount of row per page
-      paginationPosition = "BOTTOM"
+      paginationPosition = 'BOTTOM',
     } = this.props;
-    const { sortBy, order, page} = this.state;
+    const { sortBy, order, page } = this.state;
     const filterRow = filters ? (
       <TableRow className={classes.tableRowFilters}>
         {columns.map(column => (
@@ -272,27 +272,22 @@ class OtTableRF extends Component {
         ))}
       </TableRow>
     ) : null;
-    
+
     const displayOrderable = column => {
       if (column.orderable !== false) {
-        return (<TableSortLabel
-          active={column.id === sortBy}
-          direction={order}
-          onClick={this.selectSortColumn.bind(
-            null,
-            column.id
-          )}
-          className={
-            column.verticalHeader
-              ? classes.verticalHeader
-              : null
-          }
-        >
-          {column.label}
-        </TableSortLabel>)
+        return (
+          <TableSortLabel
+            active={column.id === sortBy}
+            direction={order}
+            onClick={this.selectSortColumn.bind(null, column.id)}
+            className={column.verticalHeader ? classes.verticalHeader : null}
+          >
+            {column.label}
+          </TableSortLabel>
+        );
       }
-      return column.label
-    }
+      return column.label;
+    };
     return (
       <PlotContainer
         loading={loading}
@@ -308,7 +303,7 @@ class OtTableRF extends Component {
           </PlotContainerSection>
         ) : null}
         <PlotContainerSection>
-          {paginationPosition === "TOP" ? (
+          {paginationPosition === 'TOP' ? (
             <div id="mtp-table">
               <TablePagination
                 component="div"
@@ -319,7 +314,7 @@ class OtTableRF extends Component {
                 rowsPerPageOptions={rowsPerPageOptions} // CHANGE MADE; Previously was rowsPerPageOptions={[]}
                 ActionsComponent={TablePaginationActions}
                 onChangeRowsPerPage={this.handleChangeRowsPerPage} // CHANGE MADE; Previously did not exist
-              /> 
+              />
               <hr className={classes.hr} />
             </div>
           ) : null}
@@ -365,9 +360,9 @@ class OtTableRF extends Component {
                         >
                           {displayOrderable(column)}
                         </Badge>
-                      ) : 
+                      ) : (
                         displayOrderable(column)
-                      }
+                      )}
                     </TableCell>
                   ))}
                   {verticalHeaders ? (

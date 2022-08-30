@@ -2,10 +2,7 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { Box } from '@material-ui/core';
 import Link from '../../components/Link';
-import {
-  version
-} from '../../constants';
-
+import { version } from '../../constants';
 
 // HELPERS
 function getVersion({ month, year }) {
@@ -43,7 +40,7 @@ function VersionLink() {
   return (
     <Box ml={1}>
       <Link external to={version.changeLogPage}>
-         {version.frontend}
+        {version.frontend}
       </Link>
     </Box>
   );

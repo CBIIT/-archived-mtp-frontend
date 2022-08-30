@@ -19,16 +19,16 @@ const BasePage = ({ title, children, description, location }) => {
   return (
     <Page
       header={
-      <>
-        <NCIHeader/>
-         <NavBar 
-          name="Platform"
-          search={<Search embedded />}
-          items={mainMenuItems}
-        />
-      </>
+        <>
+          <NCIHeader />
+          <NavBar
+            name="Platform"
+            search={<Search embedded />}
+            items={mainMenuItems}
+          />
+        </>
       }
-      footer={<NCIFooter/>}
+      footer={<NCIFooter />}
     >
       <Helmet title={composedTitle}>
         <meta name="description" content={description || appDescription} />

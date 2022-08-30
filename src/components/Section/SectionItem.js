@@ -29,7 +29,7 @@ function SectionItem({
   avatarStyle,
 }) {
   const color = definition.color;
-  const classes = sectionStyles({color});
+  const classes = sectionStyles({ color });
   const { loading, error, data } = request;
   const shortName = createShortName(definition);
 
@@ -45,9 +45,14 @@ function SectionItem({
               }}
               avatar={
                 <Avatar
-                  className={classNames(classes.avatar, classes.avatarHasData, avatarStyle, {
-                    [classes.avatarError]: error,
-                  })}
+                  className={classNames(
+                    classes.avatar,
+                    classes.avatarHasData,
+                    avatarStyle,
+                    {
+                      [classes.avatarError]: error,
+                    }
+                  )}
                 >
                   {shortName}
                 </Avatar>

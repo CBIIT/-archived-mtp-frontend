@@ -14,7 +14,7 @@ const styles = () => ({
     color: 'white',
     width: '100%',
   }),
-  
+
   footerWrapper: {
     fontFamily: 'Lato',
     fontSize: '16px',
@@ -31,9 +31,9 @@ const styles = () => ({
   },
 
   topMenu: {
-    padding: '32px 28px 0 28px', 
+    padding: '32px 28px 0 28px',
   },
-  
+
   horizontalLine: {
     width: '100%',
     margin: '8px auto',
@@ -41,7 +41,7 @@ const styles = () => ({
   },
 
   bottomMenu: {
-    padding: '0 28px', 
+    padding: '0 28px',
   },
 
   row: {
@@ -53,7 +53,7 @@ const styles = () => ({
   },
 
   contactUsRow: {
-    marginBottom: '8px', 
+    marginBottom: '8px',
     paddingBottom: '16px',
   },
 
@@ -64,11 +64,11 @@ const styles = () => ({
   col6: {
     width: '100%',
   },
-  
+
   col12: {
     width: '100%',
   },
-  
+
   nihPoliciesCol: {
     marginLeft: '5px',
     '@media (max-width: 640px)': {
@@ -88,7 +88,7 @@ const styles = () => ({
       textDecoration: 'none',
     },
   },
-  
+
   nciFooterTitle: {
     margin: '0 0 8px 0',
     fontSize: '25px',
@@ -98,26 +98,26 @@ const styles = () => ({
       textAlign: 'center',
     },
   },
-  
+
   nciFooterSubTitle: {
     fontSize: '16px',
     display: 'block',
   },
-  
+
   h2Title: {
     margin: '0 0 8px 0',
     fontSize: '18px',
     fontWeight: 'bold',
     lineHeight: '20px',
   },
-  
+
   menuUl: {
     margin: '0',
     marginBottom: '16px',
     paddingLeft: '0',
     listStyle: 'none',
   },
-  
+
   menuLi: {
     lineHeight: 1.5,
     '&& a': {
@@ -131,12 +131,12 @@ const styles = () => ({
       },
     },
   },
-  
+
   menuLink: {
     fontSize: '16px',
     fontWeight: 400,
   },
-  
+
   bottomRow: {
     width: '100%',
     display: 'flex',
@@ -144,7 +144,7 @@ const styles = () => ({
       display: 'grid',
     },
   },
-  
+
   col2: {
     width: '180px',
     padding: '5px 0 0 0',
@@ -154,7 +154,7 @@ const styles = () => ({
       width: '100%',
     },
   },
-  
+
   caption: {
     fontSize: '11px',
     padding: '5px 0',
@@ -180,7 +180,7 @@ const styles = () => ({
       marginRight: '0px',
     },
   },
-  
+
   copyright: {
     textAlign: 'center',
     paddingBottom: '10px',
@@ -188,11 +188,9 @@ const styles = () => ({
       fontSize: '12px',
     },
   },
-
 });
 
 const Footer = ({ classes, data }) => {
-  
   const GFL_LEN = data.global_footer_links.length;
 
   return (
@@ -203,10 +201,13 @@ const Footer = ({ classes, data }) => {
             {/* Logo */}
             <div className={classes.col6}>
               <div className={classes.logo}>
-                <RouteLinks to={data.footerLogoLink} >
+                <RouteLinks to={data.footerLogoLink}>
                   <h1 className={classes.nciFooterTitle}>
                     {data.footerTitle}
-                    <span className={classes.nciFooterSubTitle}> {data.footerSubTitle} </span>
+                    <span className={classes.nciFooterSubTitle}>
+                      {' '}
+                      {data.footerSubTitle}{' '}
+                    </span>
                   </h1>
                 </RouteLinks>
               </div>
@@ -221,22 +222,24 @@ const Footer = ({ classes, data }) => {
                       <h2 className={classes.h2Title}>CONTACT INFORMATION</h2>
                       <ul className={classes.menuUl}>
                         <li className={classes.menuLi}>
-                          <RouteLinks to={data.contactUs}>Contact Us</RouteLinks>
+                          <RouteLinks to={data.contactUs}>
+                            Contact Us
+                          </RouteLinks>
                         </li>
                       </ul>
                     </div>
                   </div>
-                   {/* More Information */}
-                  <div className={classes.row} >
-                   <div className={classes.col12}>
-                     <h2 className={classes.h2Title}>MORE INFORMATION</h2>
-                     <ul className={classes.menuUl}>
+                  {/* More Information */}
+                  <div className={classes.row}>
+                    <div className={classes.col12}>
+                      <h2 className={classes.h2Title}>MORE INFORMATION</h2>
+                      <ul className={classes.menuUl}>
                         <li className={classes.menuLi}>
                           <RouteLinks to={data.aboutPage}>About MTP</RouteLinks>
                         </li>
-                     </ul>
-                   </div>
-                 </div>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 {/* NIH Policies */}
                 <div className={cn(classes.col6, classes.nihPoliciesCol)}>
@@ -249,13 +252,17 @@ const Footer = ({ classes, data }) => {
                       <RouteLinks to={data.disclaimer}>Disclaimer</RouteLinks>
                     </li>
                     <li className={classes.menuLi}>
-                      <RouteLinks to={data.accessibility}>Accessibility</RouteLinks>
+                      <RouteLinks to={data.accessibility}>
+                        Accessibility
+                      </RouteLinks>
                     </li>
                     <li className={classes.menuLi}>
                       <RouteLinks to={data.FOIA}>FOIA</RouteLinks>
                     </li>
                     <li className={classes.menuLi}>
-                      <RouteLinks to={data.vulnerability}>HHS Vulnerability Disclosure</RouteLinks>
+                      <RouteLinks to={data.vulnerability}>
+                        HHS Vulnerability Disclosure
+                      </RouteLinks>
                     </li>
                   </ul>
                 </div>
@@ -271,29 +278,37 @@ const Footer = ({ classes, data }) => {
           <div className={classes.bottomRow}>
             {/* Version */}
             <div className={classes.col2}>
-              <div className={classes.siteVersionInfo}> FE Version:&nbsp;{data.FEversion} </div>
-              <div className={classes.siteVersionInfo}> BE Version:&nbsp;{data.BEversion} </div>
+              <div className={classes.siteVersionInfo}>
+                {' '}
+                FE Version:&nbsp;{data.FEversion}{' '}
+              </div>
+              <div className={classes.siteVersionInfo}>
+                {' '}
+                BE Version:&nbsp;{data.BEversion}{' '}
+              </div>
             </div>
-            { /* NCI Links */}
+            {/* NCI Links */}
             <div className={classes.col12}>
               <div className={classes.caption}>
-                {data.global_footer_links.slice(0, GFL_LEN).map((nciLink, index) => (
-                  <Fragment key={index}>
-                    <RouteLinks to={nciLink.link}>
-                      {nciLink.text}
-                    </RouteLinks>
-                    { index !== GFL_LEN-1 ? <span className={classes.ext}>&nbsp;|&nbsp;</span> : null}
-                  </Fragment>
-                ))}
-              </div> 
+                {data.global_footer_links
+                  .slice(0, GFL_LEN)
+                  .map((nciLink, index) => (
+                    <Fragment key={index}>
+                      <RouteLinks to={nciLink.link}>{nciLink.text}</RouteLinks>
+                      {index !== GFL_LEN - 1 ? (
+                        <span className={classes.ext}>&nbsp;|&nbsp;</span>
+                      ) : null}
+                    </Fragment>
+                  ))}
+              </div>
             </div>
           </div>
-          { /* Copyright */}
-          <div className={classes.row} >
+          {/* Copyright */}
+          <div className={classes.row}>
             <div className={classes.col12}>
               <div className={classes.copyright}>
                 <span>{data.footerStaticText}</span>
-              </div> 
+              </div>
             </div>
           </div>
         </div>

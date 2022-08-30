@@ -43,12 +43,12 @@ const EVIDENCE_PROFILE_QUERY = gql`
   ${EVIDENCE_PROFILE_SUMMARY_FRAGMENT}
 `;
 
-
 function Profile({ ensgId, efoId, symbol, name }) {
-
-// display settings for data from external source 
-// display the sections if section.definition.id is presented in the  displaySettingsForExternal array
-const [displaySettingsForExternal, setDisplaySettingsForExternal] = useState([]);
+  // display settings for data from external source
+  // display the sections if section.definition.id is presented in the  displaySettingsForExternal array
+  const [displaySettingsForExternal, setDisplaySettingsForExternal] = useState(
+    []
+  );
   return (
     <PlatformApiProvider
       lsSectionsField="evidence"
@@ -56,7 +56,10 @@ const [displaySettingsForExternal, setDisplaySettingsForExternal] = useState([])
       query={EVIDENCE_PROFILE_QUERY}
       variables={{ ensgId, efoId }}
     >
-      <SectionOrderProvider sections={sections} displaySettingsForExternal={displaySettingsForExternal}>
+      <SectionOrderProvider
+        sections={sections}
+        displaySettingsForExternal={displaySettingsForExternal}
+      >
         <ProfileHeader />
 
         <SummaryContainer>
@@ -67,7 +70,7 @@ const [displaySettingsForExternal, setDisplaySettingsForExternal] = useState([])
               label={{ symbol, name }}
               definition={definition}
               displaySettingsForExternal={displaySettingsForExternal}
-              updateDisplaySettingsForExternal = {setDisplaySettingsForExternal}
+              updateDisplaySettingsForExternal={setDisplaySettingsForExternal}
             />
           ))}
         </SummaryContainer>

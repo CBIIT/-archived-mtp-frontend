@@ -23,7 +23,6 @@ import AboutPage from './pages/AboutPage';
 import PedCancerDataNavPage from './pages/PedCancerDataNavPage';
 import ChangeLog from './pages/ChangeLogPage';
 
-
 class App extends Component {
   componentDidMount() {
     initLocalStorage();
@@ -42,14 +41,20 @@ class App extends Component {
                 <Route path="/disease/:efoId" component={DiseasePage} />
                 <Route path="/target/:ensgId" component={TargetPage} />
                 <Route path="/drug/:chemblId" component={DrugPage} />
-                <Route path="/evidence/:ensgId/:efoId" component={EvidencePage} />
+                <Route
+                  path="/evidence/:ensgId/:efoId"
+                  component={EvidencePage}
+                />
                 <Route path="/variants" component={VariantsPage} />
                 <Route path="/api" component={APIPage} />
                 <Route path="/About" component={AboutPage} />
                 <Route path="/fda-pmtl" component={PMTLPage} />
                 <Route path="/change-log" component={ChangeLog} />
                 <Route path="/fda-pmtl-docs" component={PMTLDocPage} />
-                <Route path="/pediatric-cancer-data-navigation" component={PedCancerDataNavPage} />
+                <Route
+                  path="/pediatric-cancer-data-navigation"
+                  component={PedCancerDataNavPage}
+                />
                 <Route component={NotFoundPage} />
               </Switch>
             </Router>

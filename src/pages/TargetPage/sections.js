@@ -1,6 +1,6 @@
 // MTP Section imports
-import * as OpenPedCanSomaticAlterations from '../../sections/target/OpenPedCanSomaticAlterations'
-import * as OpenPedCanGeneExpression from '../../sections/target/OpenPedCanGeneExpression'
+import * as OpenPedCanSomaticAlterations from '../../sections/target/OpenPedCanSomaticAlterations';
+import * as OpenPedCanGeneExpression from '../../sections/target/OpenPedCanGeneExpression';
 // Section imports
 import * as BaselineExpression from '../../sections/target/Expression';
 import * as Bibliography from '../../sections/target/Bibliography';

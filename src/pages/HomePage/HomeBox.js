@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Paper, makeStyles } from '@material-ui/core';
-import NavIcon from '../../assets/PediatricDataCancer-MenuBar-Icon.svg'
+import NavIcon from '../../assets/PediatricDataCancer-MenuBar-Icon.svg';
 
 const useStyles = makeStyles(theme => ({
   gridContainer: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto',
     '@media (max-width: 400px)': {
       padding: '30px 30px',
-    }
+    },
   },
   PCDNLink: {
     display: 'block',
@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   navIconContainer: {
     display: 'inline-block',
     position: 'relative',
-    top: '9px'
+    top: '9px',
   },
   PCDNTextContainer: {
     position: 'relative',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     top: '-1px',
   },
   PCDNText: {
-    borderBottom: '1px solid white'
+    borderBottom: '1px solid white',
   },
   homeboxHeader: {
     textAlign: 'center',
@@ -82,29 +82,39 @@ const useStyles = makeStyles(theme => ({
   },
   thin: {
     fontWeight: '400',
-  }
+  },
 }));
 
 const HomeBox = ({ children }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12} sm={10} md={8} lg={8} className={classes.gridContainer}>
-      <a href={"/pediatric-cancer-data-navigation"} className={classes.PCDNLink}>
-        <div className={classes.PCDNContainer}> 
+      <a
+        href={'/pediatric-cancer-data-navigation'}
+        className={classes.PCDNLink}
+      >
+        <div className={classes.PCDNContainer}>
           <div className={classes.navIconContainer}>
-            <img src={NavIcon} width="26px" height="27px" alt={"Navigation Icon"}/>
+            <img
+              src={NavIcon}
+              width="26px"
+              height="27px"
+              alt={'Navigation Icon'}
+            />
           </div>
           <span className={classes.PCDNTextContainer}>
-            <span className={classes.PCDNText}>Explore our Pediatric Cancer Data</span>
+            <span className={classes.PCDNText}>
+              Explore our Pediatric Cancer Data
+            </span>
           </span>
         </div>
       </a>
       <Paper className={classes.homeboxContainer}>
         <div className={classes.homeboxHeader}>
           <div className={classes.title}>
-              <span className={classes.bolder}>Molecular Targets</span>
-              <span className={classes.thin}> Platform</span>
-            </div>
+            <span className={classes.bolder}>Molecular Targets</span>
+            <span className={classes.thin}> Platform</span>
+          </div>
         </div>
         {children}
       </Paper>
