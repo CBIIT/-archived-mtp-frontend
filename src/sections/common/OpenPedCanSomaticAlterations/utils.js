@@ -88,21 +88,21 @@ function createLink({ type, url, linkText }) {
   return link;
 }
 
-// Generate a URL from input String, replace any ${id} with row[id]
 // TODO: Handle if row[id] return null
-function getURL(row, configURL) {
+function getFormattedString(str, row) {
   // Regex: ex. to get targetFromSourceId from /target/${targetFromSourceId}
-  const re = /\$\{((\w)+)\}/g;
+  const regex = /\$\{((\w)+)\}/g
   // p1 is the value captured from ((\w)+) regex
-  const newURL = configURL.replace(re, (match, p1) => row[p1]);
-  return newURL;
+  return str.replace(regex, (match, p1) => row[p1]);
+}
+
+// Generate a URL from input String, replace any ${id} with row[id]
+function getURL(row, configURL) {
+  return getFormattedString(configURL, row)
 }
 // Generate Link Text from input String, replace any ${id} with row[id]
-// TODO: Handle if row[id] return null
 function getLinkText(row, configLinkText) {
-  const re = /\$\{((\w)+)\}/g;
-  const newLinkText = configLinkText.replace(re, (match, p1) => row[p1]);
-  return newLinkText;
+  return getFormattedString(configLinkText, row)
 }
 // Handler for missing URL or linkText field
 function handleMissingField() {
@@ -112,7 +112,6 @@ function handleMissingField() {
   };
   return column;
 }
-
 //
 //Check if a String is null or empty
 const isEmpty = myStr => {
@@ -126,14 +125,16 @@ export const interpretConfig = (config, addColumnCustomFields) => {
   let interpretedConfig = { columns: [], dataDownloaderColumns: [] };
 
   config.forEach(c => {
-    const dataDownloaderColumns = { id: c.id };
-    if (c.exportLabel) {
-      dataDownloaderColumns.exportLabel = c.exportLabel;
+    if (c.exportValue !== false) {
+      const dataDownloaderColumns = { id: c.id };
+      if (c.exportLabel) {
+        dataDownloaderColumns.exportLabel = c.exportLabel;
+      }
+      if (typeof c.exportValue === "string") {
+        dataDownloaderColumns.exportValue = (row) => getFormattedString(c.exportValue, row)
+      }
+      interpretedConfig.dataDownloaderColumns.push(dataDownloaderColumns);
     }
-    // TODO: Support for exportValue as new field under Config file
-    // if (c.exportValue)
-    interpretedConfig.dataDownloaderColumns.push(dataDownloaderColumns);
-
     /****************  Column Used for Displaying Table on the UI ****************/
     if (!c.hidden) {
       let column = { id: c.id };
