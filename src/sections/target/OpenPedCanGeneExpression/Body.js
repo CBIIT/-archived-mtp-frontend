@@ -1,5 +1,7 @@
 import React from 'react';
 import { getGeneAllCancerPlot } from '../../../utils/externalAPI';
+import config from '../../../config';
+
 import Description from './Description';
 
 import { getData } from './Summary';
@@ -9,10 +11,7 @@ function Body({ definition, id, label: symbol }) {
   const ensemblId = id;
   const downloadFileName = `OpenPedCanGeneExpression-${ensemblId}`;
   const imageAlt = 'Ssingle-gene all-diseases';
-  // TODO: Have this imported as env variable
-  const CONFIG_URL =
-    'https://raw.githubusercontent.com/CBIIT/mtp-config/CCDIMTP-76';
-  const configAPI = `${CONFIG_URL}/front-end/page_target/GeneExpression_Config.json`;
+  const configAPI = `${config.mtpConfig}/front-end/page_target/GeneExpression_Config.json`;
   return (
     <OpenPedCanGeneExpression
       definition={definition}

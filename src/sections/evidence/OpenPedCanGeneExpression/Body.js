@@ -1,5 +1,6 @@
 import React from 'react';
 import { getGeneDiseaseGtexPlot } from '../../../utils/externalAPI';
+import config from '../../../config';
 import Description from './Description';
 
 import { getData } from './Summary';
@@ -9,10 +10,7 @@ function Body({ definition, id, label }) {
   const { ensgId: ensemblId, efoId } = id;
   const downloadFileName = `OpenPedCanGeneExpression-${ensemblId}-${efoId}`;
   const imageAlt = 'Single-gene single-disease all-GTEx-tissue-subgroups';
-  // TODO: Have this imported as env variable
-  const CONFIG_URL =
-    'https://raw.githubusercontent.com/CBIIT/mtp-config/CCDIMTP-76';
-  const configAPI = `${CONFIG_URL}/front-end/page_evidence/GeneExpression_Config.json`;
+  const configAPI = `${config.mtpConfig}/front-end/page_evidence/GeneExpression_Config.json`;
   return (
     <OpenPedCanGeneExpressionBody
       definition={definition}
