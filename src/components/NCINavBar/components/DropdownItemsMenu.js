@@ -29,8 +29,7 @@ const CustomDropdownMenu = ({ classes, dropDownElements }) => (
 const styles = () => ({
   paper: {
     background: '#E8F5FF',
-    width: '267px',
-    padding: '8px 9px 16px 33px',
+    padding: '8px 33px 16px 33px',
     position: 'absolute',
     margin: '150px 0px 0px -5px',
     borderRadius: '0',

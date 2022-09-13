@@ -21,14 +21,15 @@ const SmallerScreenNB = ({
   anchorEl,
   setAnchorEl,
 }) => {
+  const headerHeight = 183;
+  const NCINavBarHeight = 424;
+
   // NavBar will be scrollable, If the window height is smaller than the Header and NavBar height
-  const headerHeight = 185,
-    NCINavBarHeight = 318;
-  const headerAndNavBarMinHeight = headerHeight + NCINavBarHeight;
-  const popoverHeight =
-    innerHeight > headerAndNavBarMinHeight
-      ? NCINavBarHeight
-      : innerHeight - headerHeight;
+  const getPopoverHeight = () => {
+    // Header and NavBar minimum height
+    const headeraAndNavBar = headerHeight + NCINavBarHeight;
+    return innerHeight > headeraAndNavBar ? NCINavBarHeight : innerHeight - headerHeight;
+  };
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -71,7 +72,7 @@ const SmallerScreenNB = ({
         anchorReference="anchorPosition"
         elevation={1}
         marginThreshold={0}
-        anchorPosition={{ top: 185, left: 0 }}
+        anchorPosition={{ top: headerHeight, left: 0 }}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -82,7 +83,7 @@ const SmallerScreenNB = ({
             width: innerWidth,
             maxWidth: innerWidth,
             overflowY: 'auto',
-            height: popoverHeight,
+            height: getPopoverHeight(),
           },
         }}
         className={classes.PopoverStyle}
