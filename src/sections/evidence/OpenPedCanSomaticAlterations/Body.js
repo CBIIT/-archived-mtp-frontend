@@ -1,6 +1,7 @@
 import React from 'react';
 import { loader } from 'graphql.macro';
 
+import config from '../../../config';
 import { Body as OpenPedCanSomaticAlterationsBody } from '../../common/OpenPedCanSomaticAlterations';
 import Description from './Description';
 
@@ -16,11 +17,7 @@ function Body({ definition, id, label }) {
   const { ensgId: ensemblId, efoId } = id;
   const variables = { ensemblId, efoId };
   const dataDownloaderFileStem = `OpenPedCanSomaticAlterations-${ensemblId}-${efoId}`;
-
-  // TODO: Have this imported as env variable
-  const CONFIG_URL =
-    'https://raw.githubusercontent.com/CBIIT/mtp-config/CCDIMTP-76';
-  const configAPI = `${CONFIG_URL}/front-end/page_evidence`;
+  const configAPI = `${config.mtpConfig}/front-end/page_evidence`;
   return (
     <OpenPedCanSomaticAlterationsBody
       definition={definition}
