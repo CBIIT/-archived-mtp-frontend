@@ -1,15 +1,9 @@
 {
-  "name": "platform-app",
-  "version": "0.1.2",
-  "license": "Apache-2.0",
+  "name": "mtp-frontend",
   "contributors": [
-    "Gareth Peat <garethpeat@gmail.com>",
-    "Alfredo Miranda <alfredo@miranda.io>"
+    "Yizhen Chen <yizhen.chen@nih.gov>",
+    "Nahom Tesfatsion <nahom.tesfatsion@nih.gov>"
   ],
-  "bugs": {
-    "url": "https://github.com/opentargets/platform/issues",
-    "email": "support@targetvalidation.org"
-  },
   "dependencies": {
     "@apollo/client": "^3.3.4",
     "@clampy-js/react-clampy": "^1.2.0",
