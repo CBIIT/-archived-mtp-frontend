@@ -83,7 +83,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberSubjectsInDataset
+        totalAlterationsOverSubjectsInDataset
         id
         score
       }
@@ -124,7 +124,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         annots
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberSubjectsInDataset
+        totalAlterationsOverSubjectsInDataset
         id
         score
       }

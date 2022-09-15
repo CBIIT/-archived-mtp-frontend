@@ -98,7 +98,7 @@ query SomaticAlterationsQuery(
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberSubjectsInDataset
+        totalAlterationsOverSubjectsInDataset
         id
         score
         diseaseFromSourceMappedId
@@ -141,7 +141,7 @@ query SomaticAlterationsQuery(
         annots
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberSubjectsInDataset
+        totalAlterationsOverSubjectsInDataset
         id
         score
       }
