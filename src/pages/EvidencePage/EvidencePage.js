@@ -1,13 +1,10 @@
 import React, { Suspense, lazy } from 'react';
 import { useQuery } from '@apollo/client';
 import { loader } from 'graphql.macro';
-
 import BasePage from '../../components/BasePage';
 import ScrollToTop from '../../components/ScrollToTop';
-
 import Header from './Header';
 import NotFoundPage from '../NotFoundPage';
-
 import LoadingBackdrop from '../../components/LoadingBackdrop';
 
 const Profile = lazy(() => import('./Profile'));
