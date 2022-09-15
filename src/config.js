@@ -22,6 +22,7 @@ const config = {
   geneticsPortalUrl:
     window.injectedEnv.configGeneticsPortalUrl ??
     'https://genetics.opentargets.org',
+  mtpConfig: 'https://raw.githubusercontent.com/CBIIT/mtp-config/main',
 };
 
 export default config;

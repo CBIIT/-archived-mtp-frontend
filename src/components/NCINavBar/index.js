@@ -57,8 +57,18 @@ export const navBarData = [
   },
   {
     labelText: 'FDA Pediatric Molecular Target Lists',
-    type: 'link',
+    type: 'dropdown',
     link: '/fda-pmtl',
+    dropDownLinks: [
+      {
+        labelText: 'FDA Pediatric Molecular Target Lists',
+        link: '/fda-pmtl',
+      },
+      {
+        labelText: 'Documentation',
+        link: '/fda-pmtl-docs',
+      },
+    ],
   },
   {
     labelText: 'About Molecular Targets',
