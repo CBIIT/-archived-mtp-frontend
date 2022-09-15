@@ -20,7 +20,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         proteinEnsemblId
         proteinRefseqId
         PMTL
-        totalMutationsOverPatientsInDataset
+        totalMutationsOverSubjectsInDataset
         totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
@@ -48,9 +48,9 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         OncoKBCancerGene
         OncoKBOncogeneTSG
         PMTL
-        totalAlterationsOverPatientsInDataset
-        totalPrimaryTumorsAlteredOverPrimaryTumorsInDataset
-        totalRelapseTumorsAlteredOverRelapseTumorsInDataset
+        totalAlterationsOverSubjectsInDataset
+        totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
+        totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         variantCategory
         variantType
         datatypeId
@@ -83,7 +83,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberPatientsInDataset
+        totalAlterationsOverNumberSubjectsInDataset
         id
         score
       }
@@ -124,7 +124,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         annots
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberPatientsInDataset
+        totalAlterationsOverNumberSubjectsInDataset
         id
         score
       }
@@ -158,7 +158,7 @@ query SomaticAlterationsQuery($ensemblId: String!, $size: Int = 20) {
         proteinChange
         PMTL
         siftImpact
-        totalMutationsOverPatientsInDataset
+        totalMutationsOverSubjectsInDataset
         totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         vepImpact

@@ -29,7 +29,7 @@ query SomaticAlterationsQuery(
         proteinEnsemblId
         proteinRefseqId
         PMTL
-        totalMutationsOverPatientsInDataset
+        totalMutationsOverSubjectsInDataset
         totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
@@ -62,9 +62,9 @@ query SomaticAlterationsQuery(
         OncoKBCancerGene
         OncoKBOncogeneTSG
         PMTL
-        totalAlterationsOverPatientsInDataset
-        totalPrimaryTumorsAlteredOverPrimaryTumorsInDataset
-        totalRelapseTumorsAlteredOverRelapseTumorsInDataset
+        totalAlterationsOverSubjectsInDataset
+        totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
+        totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         variantCategory
         variantType
         datatypeId
@@ -98,7 +98,7 @@ query SomaticAlterationsQuery(
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberPatientsInDataset
+        totalAlterationsOverNumberSubjectsInDataset
         id
         score
         diseaseFromSourceMappedId
@@ -141,7 +141,7 @@ query SomaticAlterationsQuery(
         annots
         diseaseFromSourceMappedId
         targetFromSourceId
-        totalAlterationsOverNumberPatientsInDataset
+        totalAlterationsOverNumberSubjectsInDataset
         id
         score
       }
@@ -176,7 +176,7 @@ query SomaticAlterationsQuery(
         proteinChange
         PMTL
         siftImpact
-        totalMutationsOverPatientsInDataset
+        totalMutationsOverSubjectsInDataset
         totalPrimaryTumorsMutatedOverPrimaryTumorsInDataset
         totalRelapseTumorsMutatedOverRelapseTumorsInDataset
         vepImpact
