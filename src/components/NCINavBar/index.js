@@ -65,7 +65,7 @@ export const navBarData = [
         link: '/fda-pmtl',
       },
       {
-        labelText: 'Documentation',
+        labelText: 'MTP PMTL Documentation',
         link: '/fda-pmtl-docs',
       },
     ],
