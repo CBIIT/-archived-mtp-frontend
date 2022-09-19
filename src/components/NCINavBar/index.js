@@ -1,5 +1,8 @@
 import React from 'react';
 import NavBar from './NavBar';
+import { mtpPageNames } from '../../constants';
+
+const { fdaPmtlPage, mtpPmtlDocPage } = mtpPageNames;
 
 export const navBarstyling = {
   global: {
@@ -56,17 +59,17 @@ export const navBarData = [
     link: '/',
   },
   {
-    labelText: 'FDA Pediatric Molecular Target Lists',
+    labelText: fdaPmtlPage.label,
     type: 'dropdown',
-    link: '/fda-pmtl',
+    link: fdaPmtlPage.url,
     dropDownLinks: [
       {
-        labelText: 'FDA Pediatric Molecular Target Lists',
-        link: '/fda-pmtl',
+        labelText: fdaPmtlPage.label,
+        link: fdaPmtlPage.url,
       },
       {
-        labelText: 'MTP PMTL Documentation',
-        link: '/mtp-pmtl-docs',
+        labelText: mtpPmtlDocPage.label,
+        link: mtpPmtlDocPage.url,
       },
     ],
   },

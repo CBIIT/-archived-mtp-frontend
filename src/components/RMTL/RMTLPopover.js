@@ -3,6 +3,7 @@ import { Grid, makeStyles, Typography } from '@material-ui/core';
 import { Tab, Tabs } from '@material-ui/core';
 import Popover from '@material-ui/core/Popover';
 
+import { mtpPageNames } from '../../constants';
 import Link from '../Link';
 import RelevantIcon from './RelevantIcon';
 import NonRelevantIcon from './NonRelevantIcon';
@@ -76,7 +77,7 @@ function RMTLPopOver({ otherStyle, pmtl }) {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-  const PMTLlandingPageUrl = '/fda-pmtl';
+  const { fdaPmtlPage } = mtpPageNames;
 
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
@@ -131,7 +132,7 @@ function RMTLPopOver({ otherStyle, pmtl }) {
               <div className={classes.toLandingPageLinkBox}>
                 <span className={classes.toLandingPageLink}>
                   Search the PMTL within Molecular Targets{' '}
-                  <Link to={PMTLlandingPageUrl}>here</Link>
+                  <Link to={fdaPmtlPage.url}>here</Link>
                 </span>
               </div>
             </Tabs>
