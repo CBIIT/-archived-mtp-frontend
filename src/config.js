@@ -1,4 +1,5 @@
 // Configuration Object
+const configVersion = window.injectedEnv.configVersion ?? "dev";
 const config = {
   urlApi:
     window.injectedEnv.configUrlApi ??
@@ -22,7 +23,8 @@ const config = {
   geneticsPortalUrl:
     window.injectedEnv.configGeneticsPortalUrl ??
     'https://genetics.opentargets.org',
-  mtpConfig: 'https://raw.githubusercontent.com/CBIIT/mtp-config/main',
+
+  mtpConfig: 'https://raw.githubusercontent.com/CBIIT/mtp-config/'+configVersion,
 };
 
 export default config;
