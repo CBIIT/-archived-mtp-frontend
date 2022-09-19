@@ -8,6 +8,7 @@ import Link from '../../components/Link';
 import { appDescription, appCanonicalUrl, version } from '../../constants';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import usePlatformApi from '../../hooks/usePlatformApi';
+import { mtpPageNames } from '../../constants';
 
 const useStyles = makeStyles(theme => ({
   changeLogContainer: {
@@ -54,6 +55,7 @@ const AboutView = ({ data }) => {
   const BEversion = request.loading
     ? 'Loading...'
     : request.data?.meta?.mtpVersion?.version || version.backend;
+  const { mtpPmtlDocPage } = mtpPageNames;
 
   return (
     <>
@@ -247,7 +249,7 @@ const AboutView = ({ data }) => {
                   </Typography>
                   <b>Version in use</b>: v1.1 (Released 2021-09-09) <br />
                   <b>Detailed Change Log</b>:
-                  <Link to="/fda-pmtl-docs"> FDA PMTL Documentation</Link>
+                  <Link to={mtpPmtlDocPage.url}> {mtpPmtlDocPage.label} </Link>
                 </div>
 
                 <div className={classes.changeLogBoxRight}>
