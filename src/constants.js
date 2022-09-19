@@ -88,7 +88,7 @@ export const mainMenuItems = config.profile.mainMenuItems ?? [
   // RMTL Doc
   {
     name: 'FDA PMTL Documentation',
-    url: '/fda-pmtl-docs',
+    url: '/mtp-pmtl-docs',
     external: false,
   },
   // FDA RMTL
@@ -327,6 +327,6 @@ export const mtpPageNames = {
   // MTP PMTL Documentation 
   mtpPmtlDocPage: {
     label: 'MTP PMTL Documentation',
-    url: '/fda-pmtl-docs',
+    url: '/mtp-pmtl-docs',
   },
 };

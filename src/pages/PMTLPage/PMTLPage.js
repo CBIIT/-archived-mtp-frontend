@@ -24,6 +24,8 @@ import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import { mtpPageNames } from '../../constants';
 import PMTLData from './PMTL.json';
 
+const { mtpPmtlDocPage } = mtpPageNames;
+
 function getRows(downloadData) {
   const rows = [];
   downloadData.forEach(mapping => {
@@ -173,7 +175,7 @@ function getColumns(
       tooltip: {
         badgeContent: () => (
           <Lk
-            href="/fda-pmtl-docs#mapping-description"
+            href={`${mtpPmtlDocPage.url}#mapping-description`}
             title="Explanation of 'Mapping Description' column"
           >
             <FontAwesomeIcon icon={faInfoCircle} size="sm" />
@@ -356,7 +358,6 @@ class PMTLPage extends Component {
       this.mappingDescriptionFilterHandler
     );
     const rowsPerPageOptions = [10, 25, 50];
-    const { mtpPmtlDocPage } = mtpPageNames;
     const FDA_Publication =
       'https://www.fda.gov/about-fda/oncology-center-excellence/pediatric-oncology#target';
 
@@ -404,7 +405,7 @@ class PMTLPage extends Component {
             {loading || error ? null : (
               <>
                 <Lk
-                  href="/fda-pmtl-docs#colums-description"
+                  href={`${mtpPmtlDocPage.url}#colums-description`}
                   title="FDA PMTL Columns Description"
                 >
                   <FontAwesomeIcon icon={faInfoCircle} size="md" /> Columns

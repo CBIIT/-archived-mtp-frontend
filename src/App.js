@@ -50,7 +50,7 @@ class App extends Component {
                 <Route path="/About" component={AboutPage} />
                 <Route path="/fda-pmtl" component={PMTLPage} />
                 <Route path="/change-log" component={ChangeLog} />
-                <Route path="/fda-pmtl-docs" component={PMTLDocPage} />
+                <Route path="/mtp-pmtl-docs" component={PMTLDocPage} />
                 <Route
                   path="/pediatric-cancer-data-navigation"
                   component={PedCancerDataNavPage}
