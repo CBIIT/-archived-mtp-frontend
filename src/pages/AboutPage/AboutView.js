@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { Grid, makeStyles, Typography } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import { Helmet } from 'react-helmet';
+import classNames from 'classnames';
 import NCIFooter from '../../components/NCIFooter';
 import NCIHeader from '../../components/NCIHeader';
 import ScrollToTop from '../../components/ScrollToTop';
 import Link from '../../components/Link';
-import { appDescription, appCanonicalUrl, contact } from '../../constants';
+import { appDescription, appCanonicalUrl, contact, mtpPageNames } from '../../constants';
 import RelevantIcon from '../../components/RMTL/RelevantIcon';
 import NonRelevantIcon from '../../components/RMTL/NonRelevantIcon';
 import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import Infographic from '../../assets/about/Infographic.png';
-import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -152,6 +152,7 @@ const useStyles = makeStyles(theme => ({
 const AboutView = ({ data }) => {
   const classes = useStyles();
   const appTitle = 'About Page';
+  const { fdaPmtlPage } = mtpPageNames;
   const [showHide, setShowHide] = useState({
     fdaPmtlDS: true,
     openPedCanDS: false,
@@ -244,7 +245,7 @@ const AboutView = ({ data }) => {
           </Link>
           <br />
           Where this data is used in the MTP:
-          <Link to="/fda-pmtl"> FDA PMTL Landing Page</Link>
+          <Link to={fdaPmtlPage.url}> {fdaPmtlPage.label} </Link>
           <br />
         </p>
       </div>
@@ -459,7 +460,7 @@ const AboutView = ({ data }) => {
           <ul>
             <li>
               Browse the dedicated{' '}
-              <Link to="/fda-pmtl"> FDA PMTL Landing Page </Link> to find
+              <Link to={fdaPmtlPage.url}> {fdaPmtlPage.label} </Link> to find
               Targets and see FDA details
             </li>
             <li>

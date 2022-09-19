@@ -317,3 +317,16 @@ export const version = {
   backendURL: 'https://github.com/CBIIT/ppdc-otp-backend/releases',
   changeLogPage: '/change-log',
 };
+
+export const mtpPageNames = {
+  // FDA Pediatric Molecular Target Lists
+  fdaPmtlPage: {
+    label: 'FDA Pediatric Molecular Target Lists',
+    url: '/fda-pmtl',
+  },
+  // MTP PMTL Documentation 
+  mtpPmtlDocPage: {
+    label: 'MTP PMTL Documentation',
+    url: '/fda-pmtl-docs',
+  },
+};
