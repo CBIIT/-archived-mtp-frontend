@@ -152,7 +152,7 @@ const useStyles = makeStyles(theme => ({
 const AboutView = ({ data }) => {
   const classes = useStyles();
   const appTitle = 'About Page';
-  const { fdaPmtlPage } = mtpPageNames;
+  const { fdaPmtlPage, mtpPmtlDocPage } = mtpPageNames;
   const [showHide, setShowHide] = useState({
     fdaPmtlDS: true,
     openPedCanDS: false,
@@ -230,8 +230,8 @@ const AboutView = ({ data }) => {
           interpretation of these lists in order to better inform decisions and
           improve treatments for childhood cancers. To read more about the
           implementation of the FDA PMTL within the Molecular Targets Platform,
-          read our detailed
-          <Link to="/fda-pmtl-docs"> FDA PMTL Documentation.</Link>
+          read our detailed{' '}
+          <Link to={mtpPmtlDocPage.url}>{mtpPmtlDocPage.label}</Link>.
         </p>
         <p>
           SOURCE:
