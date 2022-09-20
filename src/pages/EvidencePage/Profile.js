@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { gql } from '@apollo/client';
-
 import { createSummaryFragment } from '../../components/Summary/utils';
 import PlatformApiProvider from '../../contexts/PlatformApiProvider';
 import ProfileHeader from './ProfileHeader';
