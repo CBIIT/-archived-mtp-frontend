@@ -88,7 +88,7 @@ export const mainMenuItems = config.profile.mainMenuItems ?? [
   // RMTL Doc
   {
     name: 'FDA PMTL Documentation',
-    url: '/fda-pmtl-docs',
+    url: '/mtp-pmtl-docs',
     external: false,
   },
   // FDA RMTL
@@ -316,4 +316,17 @@ export const version = {
   backend: config.backendVersion,
   backendURL: 'https://github.com/CBIIT/ppdc-otp-backend/releases',
   changeLogPage: '/change-log',
+};
+
+export const mtpPageNames = {
+  // FDA Pediatric Molecular Target Lists
+  fdaPmtlPage: {
+    label: 'FDA Pediatric Molecular Target Lists',
+    url: '/fda-pmtl',
+  },
+  // MTP PMTL Documentation 
+  mtpPmtlDocPage: {
+    label: 'MTP PMTL Documentation',
+    url: '/mtp-pmtl-docs',
+  },
 };

@@ -21,7 +21,10 @@ import NonRelevantIcon from '../../components/RMTL/NonRelevantIcon';
 import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ScrollToTop from '../../components/ScrollToTop';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
+import { mtpPageNames } from '../../constants';
 import PMTLData from './PMTL.json';
+
+const { mtpPmtlDocPage } = mtpPageNames;
 
 function getRows(downloadData) {
   const rows = [];
@@ -172,7 +175,7 @@ function getColumns(
       tooltip: {
         badgeContent: () => (
           <Lk
-            href="/fda-pmtl-docs#mapping-description"
+            href={`${mtpPmtlDocPage.url}#mapping-description`}
             title="Explanation of 'Mapping Description' column"
           >
             <FontAwesomeIcon icon={faInfoCircle} size="sm" />
@@ -355,7 +358,6 @@ class PMTLPage extends Component {
       this.mappingDescriptionFilterHandler
     );
     const rowsPerPageOptions = [10, 25, 50];
-    const FDA_PMTL_DocumentationUrl = '/fda-pmtl-docs';
     const FDA_Publication =
       'https://www.fda.gov/about-fda/oncology-center-excellence/pediatric-oncology#target';
 
@@ -368,7 +370,7 @@ class PMTLPage extends Component {
         </Typography>
         <br />
         <Typography paragraph>
-          <Link to={FDA_PMTL_DocumentationUrl}> Version 1.1 </Link>
+          <Link to={mtpPmtlDocPage.url}> Version 1.1 </Link>
         </Typography>
         <hr />
         <br />
@@ -378,10 +380,9 @@ class PMTLPage extends Component {
           requirements associated with drug development. The table below is a
           computable interpretation of the target lists published by the FDA.
           See our{' '}
-          <Link to={FDA_PMTL_DocumentationUrl}>
-            {' '}
-            <b>FDA PMTL Documentation </b>
-          </Link>
+          <Link to={mtpPmtlDocPage.url}>
+            <b>{mtpPmtlDocPage.label}</b>
+          </Link>{' '}
           or the official{' '}
           <Link external to={FDA_Publication}>
             <b>FDA publication</b>
@@ -404,7 +405,7 @@ class PMTLPage extends Component {
             {loading || error ? null : (
               <>
                 <Lk
-                  href="/fda-pmtl-docs#colums-description"
+                  href={`${mtpPmtlDocPage.url}#colums-description`}
                   title="FDA PMTL Columns Description"
                 >
                   <FontAwesomeIcon icon={faInfoCircle} size="md" /> Columns

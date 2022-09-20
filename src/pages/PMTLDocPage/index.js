@@ -5,6 +5,7 @@ import BasePageMTP from '../../components/BasePageMTP';
 import Link from '../../components/Link';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import ScrollToTop from '../../components/ScrollToTop';
+import { mtpPageNames } from '../../constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +68,7 @@ function PMTLDocPage() {
     'https://useast.ensembl.org/info/genome/stable_ids/index.html#:~:text=Stable%20identifiers%20are%20ways%20that,and%20consistent%20across%20Ensembl%20releases';
   const hugoHgncLink = 'https://www.genenames.org/download/custom/';
 
-  const fdaPMTL = '/fda-pmtl';
+  const { fdaPmtlPage } = mtpPageNames;
 
   const fdaPmtlColumns = {
     tableHeader: ['Column Header', 'Example Value', 'Description'],
@@ -230,8 +231,8 @@ function PMTLDocPage() {
             </Typography>
             <Typography paragraph>
               Browse the
-              <Link to={fdaPMTL}>
-                <b> FDA PMTL Landing Page </b>
+              <Link to={fdaPmtlPage.url}>
+                <b> {fdaPmtlPage.label} </b>
               </Link>
               to identify pediatric molecular targets within the Molecular
               Targets Platform.
@@ -382,14 +383,14 @@ function PMTLDocPage() {
 
           <Grid item xs={12}>
             <Typography paragraph>
-              Also note that many Target Symbols occur more than once in the FDA
-              PMTL Landing Page by design. Any target derived from multiple FDA
+              Also note that many Target Symbols occur more than once in
+              the {fdaPmtlPage.label} by design. Any target derived from multiple FDA
               Targets will appear once for each FDA Target. For example, BRAF is
               derived from three separate FDA Targets: “BRAF | Gene Abnormality:
               BRAF”, “ERK | Gene Abnormality: BRAF, MAP2K1”, and “MEK | Gene
               Abnormality: BRAF and BRAF gene fusions, MAP2K1, NF1”. Searching
-              the Target Symbol column for “BRAF” on the FDA PMTL Landing Page
-              will show all of these derivations separately.
+              the Target Symbol column for “BRAF” on the {fdaPmtlPage.label} will show
+              all of these derivations separately.
             </Typography>
           </Grid>
 
@@ -426,8 +427,8 @@ function PMTLDocPage() {
             <Typography paragraph>
               The table below contains examples and descriptions of each column
               within the searchable{' '}
-              <Link to={fdaPMTL}>
-                <b> FDA PMTL Landing Page</b>
+              <Link to={fdaPmtlPage.url}>
+                <b> {fdaPmtlPage.label}</b>
               </Link>
               .
             </Typography>
