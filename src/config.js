@@ -1,5 +1,6 @@
 // Configuration Object
-const configVersion = window.injectedEnv.configVersion ?? "main";
+//const configVersion = window.injectedEnv.configVersion ?? "main";
+const configVersion = "dev";
 const config = {
   urlApi:
     window.injectedEnv.configUrlApi ??
