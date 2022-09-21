@@ -83,17 +83,17 @@ function createLink({ type, url, linkText }) {
         ''
       );
   }
-
-  // console.log("Config| final link: ", link)
   return link;
 }
 
-// TODO: Handle if row[id] return null
 function getFormattedString(str, row) {
-  // Regex: ex. to get targetFromSourceId from /target/${targetFromSourceId}
-  const regex = /\$\{((\w)+)\}/g
-  // p1 is the value captured from ((\w)+) regex
-  return str.replace(regex, (match, p1) => row[p1]);
+  if (str && str.length > 0) {
+    // Regex: ex. to get targetFromSourceId from /target/${targetFromSourceId}
+    const regex = /\$\{((\w)+)\}/g
+    // p1 is the value captured from ((\w)+) regex
+    return str.replace(regex, (match, p1) => row[p1] || p1 || "");
+  }
+  return "";
 }
 
 // Generate a URL from input String, replace any ${id} with row[id]
@@ -125,6 +125,7 @@ export const interpretConfig = (config, addColumnCustomFields) => {
   let interpretedConfig = { columns: [], dataDownloaderColumns: [] };
 
   config.forEach(c => {
+    /****************  Column Used for Exported file ****************/
     if (c.exportValue !== false) {
       const dataDownloaderColumns = { id: c.id };
       if (c.exportLabel) {
@@ -141,7 +142,7 @@ export const interpretConfig = (config, addColumnCustomFields) => {
 
       if (c.label) column.label = c.label;
 
-      if (c.sortable && c.sortable === true) column.sortable = true;
+      if (c.sortable !== false) column.sortable = true;
 
       if (c.externalLink || c.internalLink) {
         const linkObj = c.externalLink
@@ -156,6 +157,7 @@ export const interpretConfig = (config, addColumnCustomFields) => {
               url: getURL(row, url),
               linkText: getLinkText(row, linkText),
             });
+          // The link text will be used for filtering purpose
           column.filterValue = row => getLinkText(row, linkText);
         } else {
           // Handle Links with missing field
@@ -166,22 +168,17 @@ export const interpretConfig = (config, addColumnCustomFields) => {
       if (c.id === 'PMTL') {
         column.renderCell = ({ PMTL }) => renderPMTLCell(PMTL);
         // TODO: ADD filterValue as a new Field under mtp-config
-        // TODO: What part of the link should be used for filtering purpose
         column.filterValue = false;
       }
 
       if (c.comparator) {
-        /* 
-         * TODO: Add comparator as new field for special columns under mtp-config
-         * Possible Structure
-         * comparator: {
-             isNumeric: true // if true, data will be compared as numbers instead of string. 
-             id: // if provide, the comparator function will use this id instead of the current column id to compare 
-           }
-         */
-        const { id, isNumeric } = c.comparator;
+        const {
+          id, /* |Type: String| If provide, the comparator function will use this id for comparison 
+                 instead of the current column id. */
+          isNumeric // |Type: Boolean| If true, data will be compared as numbers instead of string.
+        } = c.comparator;
         column.comparator = (row1, row2) =>
-          genericComparator(row1, row2, id, isNumeric);
+          genericComparator(row1, row2, id || c.id, isNumeric || false);
       }
 
       column = addColumnCustomFields ? addColumnCustomFields(column) : column;
