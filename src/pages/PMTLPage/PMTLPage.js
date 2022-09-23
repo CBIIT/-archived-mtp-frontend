@@ -338,12 +338,12 @@ class PMTLPage extends Component {
 
     const loading = false,
       error = false;
-    const targetSymbolOptions = getTargetSymbolOptions(rows);
-    const designationOptions = getDesignationOptions(rows);
+    const targetSymbolOptions = getTargetSymbolOptions(filteredRows);
+    const designationOptions = getDesignationOptions(filteredRows);
 
-    const fdaClassOptions = getFdaClassOptions(rows);
-    const fdaTargetOptions = getFdaTargetOptions(rows);
-    const mappingDescriptionOptions = getReformatMethodOptions(rows);
+    const fdaClassOptions = getFdaClassOptions(filteredRows);
+    const fdaTargetOptions = getFdaTargetOptions(filteredRows);
+    const mappingDescriptionOptions = getReformatMethodOptions(filteredRows);
 
     const columns = getColumns(
       targetSymbolOptions,
