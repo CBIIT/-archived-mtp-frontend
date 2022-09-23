@@ -16,6 +16,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#EDF1F4',
     color: '#000000',
     fontSize: '16px',
+  },
+  introContainer: {
     marginTop: theme.header.height,
     padding: `${theme.header.spacing} 40px 68px`,
     '@media (max-width: 360px)': {
