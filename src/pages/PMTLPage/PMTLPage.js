@@ -332,7 +332,6 @@ class PMTLPage extends Component {
   };
 
   render() {
-    const rows = getRows(PMTLData);
     // Download Data will be coming from getDownloadRows()
     const { filteredRows, pageSize } = this.state;
 
