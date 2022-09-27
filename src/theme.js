@@ -139,8 +139,8 @@ const theme = {
   },
   Drawer: {
     paper: {
-      marginTop: '232px',
-      height: 'calc(100% - 232px)',
+      marginTop: '230px', // NCILinkBar(23px), NCILogoBar(100px), NCINavBar(59px), and NavBar(48px)
+      height: 'calc(100% - 230px)',
     },
   },
   zIndex: {
@@ -148,7 +148,7 @@ const theme = {
     navPanel: 1001,
   },
   header: {
-    height: '159px', // 100px for NCILogoBar and 59px for NCINavBar
+    height: '182px', // // NCILinkBar(23px), NCILogoBar(100px), and NCINavBar(59px)
     spacing: '52px', // spacing below the header
   },
 };
