@@ -11,8 +11,6 @@ import {
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import 'graphiql/graphiql.min.css';
-
-import Link from '../../components/Link';
 import { fetcher } from '../../utils/global';
 
 const TARGET_ASSOCS = loader('./TargetAssocs.gql');
@@ -42,7 +40,7 @@ const useStyles = makeStyles({
 
 function APIPage() {
   const classes = useStyles();
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
 
   return (
     <>
@@ -50,39 +48,11 @@ function APIPage() {
         API
       </Typography>
       <Typography paragraph>
-        The Open Targets Platform is powered by a GraphQL API that supports
+        The Molecular Targets Platform is powered by a GraphQL API that supports
         graphical queries for a single entity or target-disease association
-        across our knowledge graph. Read our{' '}
-        <Link
-          external
-          to="https://platform-docs.opentargets.org/data-access/graphql-api"
-        >
-          GraphQL API documentation
-        </Link>{' '}
-        and visit the{' '}
-        <Link external to="https://community.opentargets.org">
-          Open Targets Community
-        </Link>{' '}
-        for more how-to guides and tutorials.
+        across our knowledge graph. Please note that ur API is optimised for a single query. 
       </Typography>
-      <Typography paragraph>
-        Please note that ur API is optimised for a single query. For more
-        programmatic or systematic analyses, please use{' '}
-        <Link
-          external
-          to="https://platform-docs.opentargets.org/data-access/datasets"
-        >
-          our dataset downloads
-        </Link>{' '}
-        or{' '}
-        <Link
-          external
-          to="https://platform-docs.opentargets.org/data-access/google-bigquery"
-        >
-          Google BigQuery instance
-        </Link>
-        .
-      </Typography>
+    
       <Grid className={classes.container} container spacing={3}>
         <Grid item md={3} xl={2}>
           <Typography variant="h5" paragraph>
