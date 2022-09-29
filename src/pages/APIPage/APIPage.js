@@ -50,7 +50,7 @@ function APIPage() {
       <Typography paragraph>
         The Molecular Targets Platform is powered by a GraphQL API that supports
         graphical queries for a single entity or target-disease association
-        across our knowledge graph. Please note that ur API is optimised for a single query. 
+        across our knowledge graph. Please note that our API is optimised for a single query. 
       </Typography>
     
       <Grid className={classes.container} container spacing={3}>
