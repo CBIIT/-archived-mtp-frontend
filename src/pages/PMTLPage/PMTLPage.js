@@ -25,6 +25,7 @@ import { mtpPageNames } from '../../constants';
 import PMTLData from './PMTL.json';
 
 const { mtpPmtlDocPage } = mtpPageNames;
+const PMTL_DATA_URL = "https://raw.githubusercontent.com/CBIIT/mtp-config/main/data/pmtl_v3.0.json";
 
 function getRows(downloadData) {
   const rows = [];
@@ -233,7 +234,7 @@ const getReformatMethodOptions = rows => {
 
 class PMTLPage extends Component {
   state = {
-    filteredRows: getRows(PMTLData),
+    filteredRows: [],
     pageSize: 25,
   };
   // Generic Function to handle column filtering
@@ -315,17 +316,25 @@ class PMTLPage extends Component {
       this.mappingDescriptionDim
     );
   };
+  
+  fetchData() {
+    return fetch(PMTL_DATA_URL).then((res) => res.json());
+  };
 
   componentDidMount() {
-    this.rmtlXf = crossfilter(getRows(PMTLData));
-    this.targetSymbolDim = this.rmtlXf.dimension(row => row.targetSymbol);
-    this.designationDim = this.rmtlXf.dimension(row => row.designation);
-    this.fdaClassDim = this.rmtlXf.dimension(row => row.fdaClass);
-    this.fdaTargetDim = this.rmtlXf.dimension(row => row.fdaTarget);
-    this.mappingDescriptionDim = this.rmtlXf.dimension(
-      row => row.mappingDescription
-    );
-  }
+    this.fetchData().then((data) => {
+      this.setState({ ...this.state, filteredRows: data });
+
+      this.rmtlXf = crossfilter(data); 
+      this.targetSymbolDim = this.rmtlXf.dimension(row => row.targetSymbol);
+      this.designationDim = this.rmtlXf.dimension(row => row.designation);
+      this.fdaClassDim = this.rmtlXf.dimension(row => row.fdaClass);
+      this.fdaTargetDim = this.rmtlXf.dimension(row => row.fdaTarget);
+      this.mappingDescriptionDim = this.rmtlXf.dimension(
+        row => row.mappingDescription
+      );
+    });
+  };
 
   handleRowsPerPageChange = newPageSize => {
     this.setState({ pageSize: newPageSize });
