@@ -86,6 +86,10 @@ export const navBarData = [
         labelText: 'Change Log',
         link: '/change-log',
       },
+      {
+        labelText: 'GraphQL API',
+        link: '/api',
+      },
     ],
   },
   {
