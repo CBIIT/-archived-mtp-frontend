@@ -75,6 +75,7 @@ function getColumns(
     {
       id: 'targetSymbol',
       label: 'Target Symbol',
+      style: { width: '170px', maxWidth: '170px', },
       renderCell: row => {
         const ensemblID = row.ensemblID;
         const url = '/target/' + ensemblID;
@@ -101,6 +102,7 @@ function getColumns(
     {
       id: 'designation',
       label: 'Designation',
+      style: { width: '170px', maxWidth: '170px', },
       renderCell: row => {
         let RMTLIcon = <NonRelevantIcon />;
         if (row.designation === 'Relevant Molecular Target') {
@@ -128,6 +130,7 @@ function getColumns(
     {
       id: 'fdaClass',
       label: 'FDA Class',
+      style: { width: '150px', maxWidth: '150px', },
       renderFilter: () => (
         <Autocomplete
           options={fdaClassOption}
@@ -144,6 +147,7 @@ function getColumns(
     {
       id: 'fdaTarget',
       label: 'FDA Target',
+      style: { width: '400px', maxWidth: '400px', },
       renderFilter: () => (
         <TextField
           fullWidth
@@ -160,6 +164,7 @@ function getColumns(
     {
       id: 'mappingDescription',
       label: 'Mapping Description',
+      style: { width: '200px', maxWidth: '200px', },
       renderFilter: () => (
         <Autocomplete
           options={mappingDescriptionOption}
