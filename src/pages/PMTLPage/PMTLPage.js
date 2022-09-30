@@ -21,7 +21,7 @@ import NonRelevantIcon from '../../components/RMTL/NonRelevantIcon';
 import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ScrollToTop from '../../components/ScrollToTop';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
-import { mtpPageNames } from '../../constants';
+import { mtpPageNames, version} from '../../constants';
 import PMTLData from './PMTL.json';
 
 const { mtpPmtlDocPage } = mtpPageNames;
@@ -379,7 +379,7 @@ class PMTLPage extends Component {
         </Typography>
         <br />
         <Typography paragraph>
-          <Link to={mtpPmtlDocPage.url}> Version 1.1 </Link>
+          <Link to={mtpPmtlDocPage.url}> Version {version.fdaPmtlData} </Link>
         </Typography>
         <hr />
         <br />

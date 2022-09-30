@@ -5,7 +5,7 @@ import BasePageMTP from '../../components/BasePageMTP';
 import Link from '../../components/Link';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import ScrollToTop from '../../components/ScrollToTop';
-import { mtpPageNames } from '../../constants';
+import { mtpPageNames, version } from '../../constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -403,7 +403,7 @@ function PMTLDocPage() {
           <Grid item xs={12}>
             <Typography paragraph>
               The current version of the FDA PMTL used in the Molecular Targets
-              Platform is <b> version 1.1. </b>
+              Platform is <b> version {version.fdaPmtlData}. </b>
             </Typography>
           </Grid>
 
