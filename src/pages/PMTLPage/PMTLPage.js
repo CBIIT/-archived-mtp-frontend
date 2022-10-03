@@ -22,43 +22,10 @@ import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ScrollToTop from '../../components/ScrollToTop';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import { mtpPageNames, version} from '../../constants';
-import PMTLData from './PMTL.json';
+import { genericComparator } from '../../utils/comparators'
 
 const { mtpPmtlDocPage } = mtpPageNames;
 const PMTL_DATA_URL = "https://raw.githubusercontent.com/CBIIT/mtp-config/main/data/pmtl_v3.0.json";
-
-function getRows(downloadData) {
-  const rows = [];
-  downloadData.forEach(mapping => {
-    rows.push({
-      ensemblID: mapping.Ensembl_ID,
-      targetSymbol: mapping.Approved_Symbol,
-      designation: mapping.FDA_Designation,
-      fdaClass: mapping.FDA_Class,
-      fdaTarget: mapping.FDA_Target,
-      mappingDescription: mapping.Mapping_Description,
-    });
-  });
-  return rows;
-}
-/*
- * genericComparator: comparing row1 and row2 using the input keyName.
- * return: -1 if first string is lexicographically less than second property
- *          1 if first string is lexicographically greater than second property
- *          0 if both property are equal
- */
-function genericComparator(row1, row2, keyName) {
-  const a =
-    typeof row1[keyName] === 'string'
-      ? row1[keyName].toLowerCase()
-      : row1[keyName];
-  const b =
-    typeof row2[keyName] === 'string'
-      ? row2[keyName].toLowerCase()
-      : row2[keyName];
-
-  return a < b ? -1 : a > b ? 1 : 0;
-}
 
 function getColumns(
   targetSymbolOption,
@@ -241,6 +208,7 @@ class PMTLPage extends Component {
   state = {
     filteredRows: [],
     pageSize: 25,
+    loading: true,
   };
   // Generic Function to handle column filtering
   columnFilterHandlerStartsWith = (e, selection, rmtlXf, columnDim) => {
@@ -323,12 +291,12 @@ class PMTLPage extends Component {
   };
   
   fetchData() {
-    return fetch(PMTL_DATA_URL).then((res) => res.json());
+    return fetch(PMTL_DATA_URL).then((res) => res.json())
   };
 
   componentDidMount() {
     this.fetchData().then((data) => {
-      this.setState({ ...this.state, filteredRows: data });
+      this.setState({ ...this.state, filteredRows: data || [], loading: false});
 
       this.rmtlXf = crossfilter(data); 
       this.targetSymbolDim = this.rmtlXf.dimension(row => row.targetSymbol);
@@ -338,6 +306,9 @@ class PMTLPage extends Component {
       this.mappingDescriptionDim = this.rmtlXf.dimension(
         row => row.mappingDescription
       );
+    })
+    .catch(error => {
+      this.setState({ ...this.state, filteredRows: [], loading: false});
     });
   };
 
@@ -347,10 +318,8 @@ class PMTLPage extends Component {
 
   render() {
     // Download Data will be coming from getDownloadRows()
-    const { filteredRows, pageSize } = this.state;
+    const { filteredRows, pageSize, loading } = this.state;
 
-    const loading = false,
-      error = false;
     const targetSymbolOptions = getTargetSymbolOptions(filteredRows);
     const designationOptions = getDesignationOptions(filteredRows);
 
@@ -415,7 +384,6 @@ class PMTLPage extends Component {
         <br />
         <Paper variant="outlined" elevation={0}>
           <Box m={2}>
-            {loading || error ? null : (
               <>
                 <Lk
                   href={`${mtpPmtlDocPage.url}#colums-description`}
@@ -436,9 +404,9 @@ class PMTLPage extends Component {
                   pageSize={pageSize}
                   onRowsPerPageChange={this.handleRowsPerPageChange}
                   rowsPerPageOptions={rowsPerPageOptions}
+                  loading={loading}
                 />
               </>
-            )}
           </Box>
         </Paper>
       </BasePageMTP>
