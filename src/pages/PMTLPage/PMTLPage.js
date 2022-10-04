@@ -21,43 +21,11 @@ import NonRelevantIcon from '../../components/RMTL/NonRelevantIcon';
 import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ScrollToTop from '../../components/ScrollToTop';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
-import { mtpPageNames } from '../../constants';
-import PMTLData from './PMTL.json';
+import { mtpPageNames, version} from '../../constants';
+import { genericComparator } from '../../utils/comparators'
 
 const { mtpPmtlDocPage } = mtpPageNames;
-
-function getRows(downloadData) {
-  const rows = [];
-  downloadData.forEach(mapping => {
-    rows.push({
-      ensemblID: mapping.Ensembl_ID,
-      targetSymbol: mapping.Approved_Symbol,
-      designation: mapping.FDA_Designation,
-      fdaClass: mapping.FDA_Class,
-      fdaTarget: mapping.FDA_Target,
-      mappingDescription: mapping.Mapping_Description,
-    });
-  });
-  return rows;
-}
-/*
- * genericComparator: comparing row1 and row2 using the input keyName.
- * return: -1 if first string is lexicographically less than second property
- *          1 if first string is lexicographically greater than second property
- *          0 if both property are equal
- */
-function genericComparator(row1, row2, keyName) {
-  const a =
-    typeof row1[keyName] === 'string'
-      ? row1[keyName].toLowerCase()
-      : row1[keyName];
-  const b =
-    typeof row2[keyName] === 'string'
-      ? row2[keyName].toLowerCase()
-      : row2[keyName];
-
-  return a < b ? -1 : a > b ? 1 : 0;
-}
+const PMTL_DATA_URL = "https://raw.githubusercontent.com/CBIIT/mtp-config/main/data/pmtl_v3.0.json";
 
 function getColumns(
   targetSymbolOption,
@@ -75,6 +43,7 @@ function getColumns(
     {
       id: 'targetSymbol',
       label: 'Target Symbol',
+      style: { width: '170px', maxWidth: '170px', },
       renderCell: row => {
         const ensemblID = row.ensemblID;
         const url = '/target/' + ensemblID;
@@ -101,6 +70,7 @@ function getColumns(
     {
       id: 'designation',
       label: 'Designation',
+      style: { width: '170px', maxWidth: '170px', },
       renderCell: row => {
         let RMTLIcon = <NonRelevantIcon />;
         if (row.designation === 'Relevant Molecular Target') {
@@ -128,6 +98,7 @@ function getColumns(
     {
       id: 'fdaClass',
       label: 'FDA Class',
+      style: { width: '150px', maxWidth: '150px', },
       renderFilter: () => (
         <Autocomplete
           options={fdaClassOption}
@@ -144,6 +115,7 @@ function getColumns(
     {
       id: 'fdaTarget',
       label: 'FDA Target',
+      style: { width: '400px', maxWidth: '400px', },
       renderFilter: () => (
         <TextField
           fullWidth
@@ -160,6 +132,7 @@ function getColumns(
     {
       id: 'mappingDescription',
       label: 'Mapping Description',
+      style: { width: '200px', maxWidth: '200px', },
       renderFilter: () => (
         <Autocomplete
           options={mappingDescriptionOption}
@@ -233,8 +206,9 @@ const getReformatMethodOptions = rows => {
 
 class PMTLPage extends Component {
   state = {
-    filteredRows: getRows(PMTLData),
+    filteredRows: [],
     pageSize: 25,
+    loading: true,
   };
   // Generic Function to handle column filtering
   columnFilterHandlerStartsWith = (e, selection, rmtlXf, columnDim) => {
@@ -315,35 +289,43 @@ class PMTLPage extends Component {
       this.mappingDescriptionDim
     );
   };
+  
+  fetchData() {
+    return fetch(PMTL_DATA_URL).then((res) => res.json())
+  };
 
   componentDidMount() {
-    this.rmtlXf = crossfilter(getRows(PMTLData));
-    this.targetSymbolDim = this.rmtlXf.dimension(row => row.targetSymbol);
-    this.designationDim = this.rmtlXf.dimension(row => row.designation);
-    this.fdaClassDim = this.rmtlXf.dimension(row => row.fdaClass);
-    this.fdaTargetDim = this.rmtlXf.dimension(row => row.fdaTarget);
-    this.mappingDescriptionDim = this.rmtlXf.dimension(
-      row => row.mappingDescription
-    );
-  }
+    this.fetchData().then((data) => {
+      this.setState({ ...this.state, filteredRows: data || [], loading: false});
+
+      this.rmtlXf = crossfilter(data); 
+      this.targetSymbolDim = this.rmtlXf.dimension(row => row.targetSymbol);
+      this.designationDim = this.rmtlXf.dimension(row => row.designation);
+      this.fdaClassDim = this.rmtlXf.dimension(row => row.fdaClass);
+      this.fdaTargetDim = this.rmtlXf.dimension(row => row.fdaTarget);
+      this.mappingDescriptionDim = this.rmtlXf.dimension(
+        row => row.mappingDescription
+      );
+    })
+    .catch(error => {
+      this.setState({ ...this.state, filteredRows: [], loading: false});
+    });
+  };
 
   handleRowsPerPageChange = newPageSize => {
     this.setState({ pageSize: newPageSize });
   };
 
   render() {
-    const rows = getRows(PMTLData);
     // Download Data will be coming from getDownloadRows()
-    const { filteredRows, pageSize } = this.state;
+    const { filteredRows, pageSize, loading } = this.state;
 
-    const loading = false,
-      error = false;
-    const targetSymbolOptions = getTargetSymbolOptions(rows);
-    const designationOptions = getDesignationOptions(rows);
+    const targetSymbolOptions = getTargetSymbolOptions(filteredRows);
+    const designationOptions = getDesignationOptions(filteredRows);
 
-    const fdaClassOptions = getFdaClassOptions(rows);
-    const fdaTargetOptions = getFdaTargetOptions(rows);
-    const mappingDescriptionOptions = getReformatMethodOptions(rows);
+    const fdaClassOptions = getFdaClassOptions(filteredRows);
+    const fdaTargetOptions = getFdaTargetOptions(filteredRows);
+    const mappingDescriptionOptions = getReformatMethodOptions(filteredRows);
 
     const columns = getColumns(
       targetSymbolOptions,
@@ -370,7 +352,7 @@ class PMTLPage extends Component {
         </Typography>
         <br />
         <Typography paragraph>
-          <Link to={mtpPmtlDocPage.url}> Version 1.1 </Link>
+          <Link to={mtpPmtlDocPage.url}> Version {version.fdaPmtlData} </Link>
         </Typography>
         <hr />
         <br />
@@ -402,7 +384,6 @@ class PMTLPage extends Component {
         <br />
         <Paper variant="outlined" elevation={0}>
           <Box m={2}>
-            {loading || error ? null : (
               <>
                 <Lk
                   href={`${mtpPmtlDocPage.url}#colums-description`}
@@ -423,9 +404,9 @@ class PMTLPage extends Component {
                   pageSize={pageSize}
                   onRowsPerPageChange={this.handleRowsPerPageChange}
                   rowsPerPageOptions={rowsPerPageOptions}
+                  loading={loading}
                 />
               </>
-            )}
           </Box>
         </Paper>
       </BasePageMTP>

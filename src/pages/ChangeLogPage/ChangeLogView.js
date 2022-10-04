@@ -5,10 +5,9 @@ import NCIFooter from '../../components/NCIFooter';
 import NCIHeader from '../../components/NCIHeader';
 import ScrollToTop from '../../components/ScrollToTop';
 import Link from '../../components/Link';
-import { appDescription, appCanonicalUrl, version } from '../../constants';
+import { appDescription, appCanonicalUrl, version, mtpPageNames } from '../../constants';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import usePlatformApi from '../../hooks/usePlatformApi';
-import { mtpPageNames } from '../../constants';
 
 const useStyles = makeStyles(theme => ({
   changeLogContainer: {
@@ -16,6 +15,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#EDF1F4',
     color: '#000000',
     fontSize: '16px',
+  },
+  introContainer: {
     marginTop: theme.header.height,
     padding: `${theme.header.spacing} 40px 68px`,
     '@media (max-width: 360px)': {
@@ -247,7 +248,7 @@ const AboutView = ({ data }) => {
                   >
                     FDA Pediatric Molecular Target Lists
                   </Typography>
-                  <b>Version in use</b>: v1.1 (Released 2021-09-09) <br />
+                  <b>Version in use</b>: v{version.fdaPmtlData} (Released 2022-09-09) <br />
                   <b>Detailed Change Log</b>:
                   <Link to={mtpPmtlDocPage.url}> {mtpPmtlDocPage.label} </Link>
                 </div>

@@ -346,9 +346,7 @@ class OtTableRF extends Component {
                           column.verticalHeader,
                         [classes.tableCellVertical]: column.verticalHeader,
                       })}
-                      style={{
-                        width: column.width,
-                      }}
+                      style={column.style}
                     >
                       {column.tooltip ? (
                         <Badge
