@@ -31,8 +31,9 @@ const styles = () => ({
     background: '#E8F5FF',
     padding: '8px 33px 16px 33px',
     position: 'absolute',
-    margin: '150px 0px 0px -5px',
+    margin: '0px 0px 0px -5px',
     borderRadius: '0',
+    top: '59px'
   },
   arrowUp: {
     width: 0,
