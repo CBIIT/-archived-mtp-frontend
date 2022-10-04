@@ -17,6 +17,7 @@ const CustomDropdownMenu = ({ classes, dropDownElements }) => (
             }
             activeClassName={classes.activeLink}
             to={dropDownElementsItem.link}
+            key={dropDownElementsItem.link}
           >
             {dropDownElementsItem.labelText}
           </NavLink>
