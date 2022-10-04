@@ -316,6 +316,7 @@ export const version = {
   backend: config.backendVersion,
   backendURL: 'https://github.com/CBIIT/ppdc-otp-backend/releases',
   changeLogPage: '/change-log',
+  fdaPmtlData: '3.0',
 };
 
 export const mtpPageNames = {
