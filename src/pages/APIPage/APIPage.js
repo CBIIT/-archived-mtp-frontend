@@ -19,6 +19,7 @@ const TARGET_DISEASE_EVIDENCE = loader('./TargetDiseaseEvidence.gql');
 const TARGET_ANNOTATION = loader('./TargetAnnotation.gql');
 const DISEASE_ANNOTATION = loader('./DiseaseAnnotation.gql');
 const DRUG_ANNOTATION = loader('./DrugAnnotation.gql');
+const PEDCAN = loader('./SomaticAlterationsQuery.gql');
 
 // lazy load GraphiQL and remove Logo and Toolbar
 const GraphiQL = lazy(() =>
@@ -108,6 +109,21 @@ function APIPage() {
                   color="primary"
                   onClick={() =>
                     setQuery(TARGET_DISEASE_EVIDENCE.loc.source.body)
+                  }
+                >
+                  Run sample query
+                </Button>
+
+                <Typography variant="subtitle2" display="block" paragraph>
+                  Explore Somatic Alterations evidence that supports a specific target-disease
+                  association
+                </Typography>
+                <Button
+                  className={classes.buttonMargin}
+                  variant="contained"
+                  color="primary"
+                  onClick={() =>
+                    setQuery(PEDCAN.loc.source.body)
                   }
                 >
                   Run sample query
