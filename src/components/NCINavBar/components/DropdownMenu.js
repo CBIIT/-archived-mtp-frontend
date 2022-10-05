@@ -20,10 +20,12 @@ const DropdownMenu = ({
     setDisplayDropDownMenu(false);
   }
   const path = useLocation().pathname;
-  let buttonRootClicked = '';
+
   //  For Nav with DropDown, bold text when current path is same as one of it's menu item.
-  dropDownElements
-    .forEach(menu => menu.link === path ? buttonRootClicked = classes.buttonRootClicked : '')
+  let buttonRootClicked = '';
+  const active = dropDownElements.some((menu) => menu.link === path);
+  if (active) buttonRootClicked = classes.buttonRootClicked;
+
   return (
     <div
       onMouseEnter={handleClick}
