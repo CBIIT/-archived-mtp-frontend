@@ -21,6 +21,11 @@ const DropdownMenu = ({
   }
   const path = useLocation().pathname;
 
+  //  For Nav with DropDown, bold text when current path is same as one of it's menu item.
+  let buttonRootClicked = '';
+  const active = dropDownElements.some((menu) => menu.link === path);
+  if (active) buttonRootClicked = classes.buttonRootClicked;
+
   return (
     <div
       onMouseEnter={handleClick}
@@ -38,11 +43,7 @@ const DropdownMenu = ({
         classes={{ root: classes.buttonRoot }}
       >
         <span
-          className={
-            path === '/about' || path === '/change-log'
-              ? classes.buttonRootClicked
-              : ''
-          }
+          className={buttonRootClicked}
           id={`navbar_dropdown_${linkText}`}
         >
           {linkText}
