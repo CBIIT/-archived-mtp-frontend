@@ -894,7 +894,15 @@ const AboutView = ({ data }) => {
               <Typography paragraph className={classes.space}>
                 The Open Targets Platform undergoes regular updates to add new
                 data and functionalities, which are integrated into the
-                Molecular Targets Platform as soon as possible.
+                Molecular Targets Platform as soon as possible. To access
+                Open Targets Platform data releases directly, please see their{' '}
+                <Link
+                  to="https://platform.opentargets.org/downloads"
+                  external
+                >
+                  Data Downloads
+                  <ExternalLinkIcon />
+                </Link>.
               </Typography>
 
               <hr className={classes.containerDiverHr} />
