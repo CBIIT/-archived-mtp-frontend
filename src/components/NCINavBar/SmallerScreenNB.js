@@ -110,14 +110,26 @@ const SmallerScreenNB = ({
                           className={classes.liStyle}
                           key={index + '_' + dIndex}
                         >
-                          <NavLink
-                            to={dropDownNavItem.link}
-                            onClick={handleClose}
-                            className={classes.navLink}
-                          >
-                            <span className={classes.greaterSign}>{'>'}</span>{' '}
-                            {dropDownNavItem.labelText}
-                          </NavLink>
+                        {/* Open using the anchor tag when pageType value is a file */}
+                          {dropDownNavItem.pageType === 'file' ?
+                            <a
+                              href={dropDownNavItem.link}
+                              onClick={handleClose}
+                              className={classes.navLink}
+                            >
+                              <span className={classes.greaterSign}>{'>'}</span>{' '}
+                              {dropDownNavItem.labelText}
+                            </a>
+                            :
+                            <NavLink
+                              to={dropDownNavItem.link}
+                              onClick={handleClose}
+                              className={classes.navLink}
+                            >
+                              <span className={classes.greaterSign}>{'>'}</span>{' '}
+                              {dropDownNavItem.labelText}
+                            </NavLink>
+                          }
                         </li>
                       ))}
                   </ul>

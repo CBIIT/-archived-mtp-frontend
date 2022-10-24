@@ -53,6 +53,7 @@ const DropdownMenu = ({
         <DropdownItemsMenu
           navBarstyling={navBarstyling}
           dropDownElements={dropDownElements}
+          pathname={path}
         />
       ) : (
         ''

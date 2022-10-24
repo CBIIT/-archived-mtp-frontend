@@ -3,12 +3,26 @@ import { NavLink } from 'react-router-dom';
 import { withStyles, Paper } from '@material-ui/core';
 import cn from '../../helpers/classNameConcat';
 
-const CustomDropdownMenu = ({ classes, dropDownElements }) => (
+const CustomDropdownMenu = ({ classes, dropDownElements, pathname }) => (
   <>
     <div className={classes.arrowUp} />
     <Paper className={classes.paper}>
       <div id="aboutDropDown">
         {dropDownElements.map(dropDownElementsItem => (
+          dropDownElementsItem.pageType === 'file' ?
+          <a
+            className={
+              cn(dropDownElementsItem.sublink
+                ? cn(classes.sublink, classes.link)
+                : classes.link
+              , pathname === dropDownElementsItem.link ? classes.activeLink : null)
+            }
+            href={dropDownElementsItem.link}
+            key={dropDownElementsItem.link}
+          >
+            {dropDownElementsItem.labelText}
+          </a>
+          :
           <NavLink
             className={
               dropDownElementsItem.sublink
@@ -81,5 +95,7 @@ CustomDropdownMenu.defaultProps = {
   classes: {},
   statsStyling: {},
 };
+
+
 
 export default withStyles(styles)(CustomDropdownMenu);
