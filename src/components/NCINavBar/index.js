@@ -90,6 +90,11 @@ export const navBarData = [
         labelText: 'GraphQL API',
         link: '/api',
       },
+      {
+        labelText: 'User Guide',
+        link: '/MTP-User-Guide-v1.pdf',
+        pageType: 'file',
+      },
     ],
   },
   {
