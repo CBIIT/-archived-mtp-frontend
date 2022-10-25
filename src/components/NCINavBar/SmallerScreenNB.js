@@ -110,7 +110,7 @@ const SmallerScreenNB = ({
                           className={classes.liStyle}
                           key={index + '_' + dIndex}
                         >
-                        {/* Open using the anchor tag when pageType value is a file */}
+                        {/* Open using the anchor tag when the value of pageType is a file */}
                           {dropDownNavItem.pageType === 'file' ?
                             <a
                               href={dropDownNavItem.link}

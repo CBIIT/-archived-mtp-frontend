@@ -96,6 +96,4 @@ CustomDropdownMenu.defaultProps = {
   statsStyling: {},
 };
 
-
-
 export default withStyles(styles)(CustomDropdownMenu);
