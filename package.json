@@ -2,14 +2,7 @@
   "name": "platform-app",
   "version": "0.1.2",
   "license": "Apache-2.0",
-  "contributors": [
-    "Gareth Peat <garethpeat@gmail.com>",
-    "Alfredo Miranda <alfredo@miranda.io>"
-  ],
-  "bugs": {
-    "url": "https://github.com/opentargets/platform/issues",
-    "email": "support@targetvalidation.org"
-  },
+  "homepage": "./",
   "dependencies": {
     "@clampy-js/react-clampy": "^1.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
