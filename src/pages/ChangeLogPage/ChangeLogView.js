@@ -54,7 +54,7 @@ const getVersion = (obj) => {
   return obj ? `${obj?.version} (Released ${obj?.releaseDate})` : '';
 };
 
-const AboutView = ({ data }) => {
+const ChangeLogView = ({ data }) => {
   const request = usePlatformApi();
   const configVersion = useConfigVersion();
   const { fdaPmtl, openTargetsPlatform, openPedCanAnalyses, oncoKBCancerGeneList } = configVersion;
@@ -277,4 +277,4 @@ const AboutView = ({ data }) => {
   );
 };
 
-export default AboutView;
+export default ChangeLogView;
