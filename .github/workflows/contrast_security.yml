@@ -19,6 +19,7 @@ jobs:
           orgId: ${{ secrets.CONTRAST_ORGANIZATION_ID }}
           authHeader: ${{ secrets.CONTRAST_AUTH_HEADER }}
           apiUrl: ${{ secrets.CONTRAST_API_URL }}
-          severity: medium
+          severity: high
           fail: true
+          filePath: package.json
 
