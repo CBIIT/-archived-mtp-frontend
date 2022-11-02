@@ -22,3 +22,4 @@ jobs:
           severity: high
           fail: true
           filePath: package.json
+          
