@@ -209,6 +209,7 @@ class PMTLPage extends Component {
     filteredRows: [],
     pageSize: 25,
     loading: true,
+    fdaPmtlVersion: "",
   };
   // Generic Function to handle column filtering
   columnFilterHandlerStartsWith = (e, selection, rmtlXf, columnDim) => {
@@ -290,12 +291,12 @@ class PMTLPage extends Component {
     );
   };
   
-  fetchData() {
-    return fetch(PMTL_DATA_URL).then((res) => res.json())
+  fetchData(url) {
+    return fetch(url).then((res) => res.json());
   };
 
   componentDidMount() {
-    this.fetchData().then((data) => {
+    this.fetchData(PMTL_DATA_URL).then((data) => {
       this.setState({ ...this.state, filteredRows: data || [], loading: false});
 
       this.rmtlXf = crossfilter(data); 
@@ -310,6 +311,10 @@ class PMTLPage extends Component {
     .catch(error => {
       this.setState({ ...this.state, filteredRows: [], loading: false});
     });
+
+    this.fetchData(version.versionConfigURL)
+    .then(data => this.setState({...this.state, fdaPmtlVersion: data.fdaPmtl.version}))
+    .catch(error => this.setState({...this.state, fdaPmtlVersion: ""}));
   };
 
   handleRowsPerPageChange = newPageSize => {
@@ -318,7 +323,7 @@ class PMTLPage extends Component {
 
   render() {
     // Download Data will be coming from getDownloadRows()
-    const { filteredRows, pageSize, loading } = this.state;
+    const { filteredRows, pageSize, loading, fdaPmtlVersion } = this.state;
 
     const targetSymbolOptions = getTargetSymbolOptions(filteredRows);
     const designationOptions = getDesignationOptions(filteredRows);
@@ -352,7 +357,7 @@ class PMTLPage extends Component {
         </Typography>
         <br />
         <Typography paragraph>
-          <Link to={mtpPmtlDocPage.url}> Version {version.fdaPmtlData} </Link>
+          <Link to={mtpPmtlDocPage.url}> Version {fdaPmtlVersion} </Link>
         </Typography>
         <hr />
         <br />
