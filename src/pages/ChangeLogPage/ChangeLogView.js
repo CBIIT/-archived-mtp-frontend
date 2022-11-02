@@ -50,8 +50,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const getVersion = (obj) => {
-  return obj ? `${obj?.version} (Released ${obj?.releaseDate})` : '';
+const getVersion = (obj, prefix='') => {
+  return obj ? `${prefix + obj?.version} (Released ${obj?.releaseDate})` : '';
 };
 
 const ChangeLogView = ({ data }) => {
@@ -198,7 +198,7 @@ const ChangeLogView = ({ data }) => {
                   >
                     OpenPedCan Analyses
                   </Typography>
-                  <b>Version in use</b>: {getVersion(openPedCanAnalyses)} <br />
+                  <b>Version in use</b>: {getVersion(openPedCanAnalyses, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link
                     to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis/blob/4fb04fe60754b90da3c241dbb8b727c3722487cc/doc/release-notes.md"
@@ -229,7 +229,7 @@ const ChangeLogView = ({ data }) => {
                   >
                     OncoKB Cancer Gene List
                   </Typography>
-                  <b>Version in use</b>: {getVersion(oncoKBCancerGeneList)} <br />
+                  <b>Version in use</b>: {getVersion(oncoKBCancerGeneList, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link to="https://www.oncokb.org/news#07162021" external>
                     {' '}
@@ -256,7 +256,7 @@ const ChangeLogView = ({ data }) => {
                   >
                     FDA Pediatric Molecular Target Lists
                   </Typography>
-                  <b>Version in use</b>: v{getVersion(fdaPmtl)} <br />
+                  <b>Version in use</b>: {getVersion(fdaPmtl, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link to={mtpPmtlDocPage.url}> {mtpPmtlDocPage.label} </Link>
                 </div>
