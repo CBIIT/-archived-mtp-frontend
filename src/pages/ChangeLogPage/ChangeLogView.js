@@ -8,6 +8,7 @@ import Link from '../../components/Link';
 import { appDescription, appCanonicalUrl, version, mtpPageNames } from '../../constants';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import usePlatformApi from '../../hooks/usePlatformApi';
+import useConfigVersion from '../../hooks/useConfigVersion';
 
 const useStyles = makeStyles(theme => ({
   changeLogContainer: {
@@ -49,8 +50,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const AboutView = ({ data }) => {
+const getVersion = (obj, prefix='') => {
+  return obj ? `${prefix + obj?.version} (Released ${obj?.releaseDate})` : '';
+};
+
+const ChangeLogView = ({ data }) => {
   const request = usePlatformApi();
+  const configVersion = useConfigVersion();
+  const { fdaPmtl, openTargetsPlatform, openPedCanAnalyses, oncoKBCancerGeneList } = configVersion;
+
   const classes = useStyles();
   const appTitle = 'Change Log';
   const BEversion = request.loading
@@ -105,7 +113,7 @@ const AboutView = ({ data }) => {
                   >
                     Open Targets Platform
                   </Typography>
-                  <b>Version in use</b>: 22.04 (Released 2022-04-28) <br />
+                  <b>Version in use</b>: {getVersion(openTargetsPlatform)} <br />
                   <b>Detailed Change Log</b>:
                   <Link
                     to="https://platform-docs.opentargets.org/release-notes"
@@ -190,7 +198,7 @@ const AboutView = ({ data }) => {
                   >
                     OpenPedCan Analyses
                   </Typography>
-                  <b>Version in use</b>: v10 (Released 2021-10-12) <br />
+                  <b>Version in use</b>: {getVersion(openPedCanAnalyses, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link
                     to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis/blob/4fb04fe60754b90da3c241dbb8b727c3722487cc/doc/release-notes.md"
@@ -221,7 +229,7 @@ const AboutView = ({ data }) => {
                   >
                     OncoKB Cancer Gene List
                   </Typography>
-                  <b>Version in use</b>: v3.5 (Released 2021-07-16) <br />
+                  <b>Version in use</b>: {getVersion(oncoKBCancerGeneList, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link to="https://www.oncokb.org/news#07162021" external>
                     {' '}
@@ -248,7 +256,7 @@ const AboutView = ({ data }) => {
                   >
                     FDA Pediatric Molecular Target Lists
                   </Typography>
-                  <b>Version in use</b>: v{version.fdaPmtlData} (Released 2022-09-09) <br />
+                  <b>Version in use</b>: {getVersion(fdaPmtl, 'v')} <br />
                   <b>Detailed Change Log</b>:
                   <Link to={mtpPmtlDocPage.url}> {mtpPmtlDocPage.label} </Link>
                 </div>
@@ -269,4 +277,4 @@ const AboutView = ({ data }) => {
   );
 };
 
-export default AboutView;
+export default ChangeLogView;
