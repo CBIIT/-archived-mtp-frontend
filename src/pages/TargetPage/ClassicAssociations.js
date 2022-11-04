@@ -68,7 +68,7 @@ function ClassicAssociations({ ensgId, symbol }) {
           {data ? (
             <>
               <strong>
-                {data.target.associatedDiseases.count} diseases or phenotypes
+                <span id="associatedDiseases">{data.target.associatedDiseases.count}</span> diseases or phenotypes
               </strong>{' '}
               associated with <strong>{symbol}</strong>
             </>
