@@ -125,6 +125,7 @@ function CnvByGeneTab({
     <Grid container>
       <Grid item xs={12}>
         <DataTable
+          id= "somaticAlterationsCNVTable"
           dataDownloaderColumns={
             configDataDownloaderColumns || dataDownloaderColumns
           }

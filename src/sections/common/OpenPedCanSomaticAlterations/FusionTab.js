@@ -151,6 +151,7 @@ function FusionTab({
     <Grid container>
       <Grid item xs={12}>
         <DataTable
+          id= "somaticAlterationsfusionTable"
           dataDownloaderColumns={
             configDataDownloaderColumns || dataDownloaderColumns
           }

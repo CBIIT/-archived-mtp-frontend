@@ -113,6 +113,7 @@ function FusionByGeneTab({
     <Grid container>
       <Grid item xs={12}>
         <DataTable
+          id= "somaticAlterationsFusionByGeneTable"
           dataDownloaderColumns={
             configDataDownloaderColumns || dataDownloaderColumns
           }

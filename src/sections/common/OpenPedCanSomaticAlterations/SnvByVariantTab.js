@@ -146,6 +146,7 @@ function SnvByVariantTab({
     <Grid container>
       <Grid item xs={12}>
         <DataTable
+          id= "somaticAlterationsSNVByVariantTable"
           dataDownloaderColumns={
             configDataDownloaderColumns || dataDownloaderColumns
           }

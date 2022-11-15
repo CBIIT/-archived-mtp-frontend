@@ -154,8 +154,8 @@ function Body({
               style={{ marginBottom: '1rem' }}
               className={classes.tabs}
             >
-              <Tab value="linear" label="Linear" />
-              <Tab value="log10" label="Log 10" />
+              <Tab value="linear" label="Linear" id="geneExpressionLinearTab" />
+              <Tab value="log10" label="Log 10" id="geneExpressionLog10Tab"/>
             </Tabs>
 
             {tab === 'linear' ? (
@@ -167,7 +167,7 @@ function Body({
                     fileStem={fileStem}
                     captionLabel="Download data as"
                   />
-                  <Grid item xs={12} style={{ overflow: 'auto' }}>
+                  <Grid item xs={12} style={{ overflow: 'auto' }} id="geneExpressionLinear">
                     {linearPlot === '' ? (
                       ''
                     ) : (
@@ -191,7 +191,7 @@ function Body({
                     fileStem={fileStem}
                     captionLabel="Download data as"
                   />
-                  <Grid item xs={12} style={{ overflow: 'auto' }}>
+                  <Grid item xs={12} style={{ overflow: 'auto' }} id="geneExpressionLog10">
                     {log10Plot === '' ? (
                       ''
                     ) : (
