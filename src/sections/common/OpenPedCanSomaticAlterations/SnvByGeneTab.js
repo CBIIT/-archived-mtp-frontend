@@ -163,6 +163,7 @@ function SnvByGeneTab({
     <Grid container>
       <Grid item xs={12}>
         <DataTable
+          id= "somaticAlterationsSNVByGeneTable"
           dataDownloaderColumns={
             configDataDownloaderColumns || dataDownloaderColumns
           }
