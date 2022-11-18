@@ -94,7 +94,7 @@ function RMTLPopOver({ otherStyle, pmtl }) {
       <div onClick={handleClick} className={classes.rmtlHeaderText}>
         <span>FDA PMTL: </span>
         <span className={classes.fdaDesignation}>
-          <b>{fdaDesignation}</b>
+          <b id="PMTL">{fdaDesignation}</b>
         </span>
         <div className={classes.iconContainer}> {pmtlIcon} </div>
       </div>

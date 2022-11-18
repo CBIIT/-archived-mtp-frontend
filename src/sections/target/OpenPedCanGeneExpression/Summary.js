@@ -65,6 +65,7 @@ function Summary({
     <SummaryItem
       definition={definition}
       request={request}
+      id={'geneExpressionSummary'}
       renderSummary={data => {
         const hasData = definition.hasData(data);
         return hasData ? 'Available' : 'no data';

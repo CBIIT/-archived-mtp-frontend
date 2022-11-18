@@ -110,26 +110,31 @@ function Body({
                 value="snvByGene"
                 label="SNV By Gene"
                 disabled={snvByGene.evidences.count === 0}
+                id="snvByGeneTab"
               />
               <Tab
                 value="snvByVariant"
                 label="SNV By Variant"
                 disabled={snvByVariant.evidences.count === 0}
+                id="snvByVariantTab"
               />
               <Tab
                 value="cnvByGene"
                 label="CNV By Gene"
                 disabled={cnvByGene.evidences.count === 0}
+                id="cnvByGeneTab"
               />
               <Tab
                 value="fusionByGene"
                 label="Fusion By Gene"
                 disabled={fusionByGene.evidences.count === 0}
+                id="fusionByGeneTab"
               />
               <Tab
                 value="fusion"
                 label="Fusion"
                 disabled={fusion.evidences.count === 0}
+                id="fusionTab"
               />
             </Tabs>
             {/* table 1: SNV by Gene */}
