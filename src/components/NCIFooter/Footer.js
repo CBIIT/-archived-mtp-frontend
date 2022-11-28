@@ -145,9 +145,9 @@ const styles = () => ({
     },
   },
 
-  col2: {
-    width: '180px',
-    padding: '5px 0 0 0',
+  versionBox: {
+    minWidth: 'fit-content',
+    padding: '5px 5px 0 0',
     '@media (max-width: 1000px)': {
       padding: '0 0 15px 0',
       textAlign: 'center',
@@ -277,7 +277,7 @@ const Footer = ({ classes, data }) => {
         <div className={classes.bottomMenu}>
           <div className={classes.bottomRow}>
             {/* Version */}
-            <div className={classes.col2}>
+            <div className={classes.versionBox}>
               <div className={classes.siteVersionInfo}>
                 {' '}
                 FE Version:&nbsp;{data.FEversion}{' '}
