@@ -13,6 +13,7 @@ import NonRelevantIcon from '../../components/RMTL/NonRelevantIcon';
 import UnspecifiedIcon from '../../components/RMTL/UnspecifiedIcon';
 import ExternalLinkIcon from '../../components/ExternalLinkIcon';
 import Infographic from '../../assets/about/Infographic.png';
+import { mtpLinks } from '../../constants';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -266,11 +267,11 @@ const AboutView = ({ data }) => {
         <p>
           SOURCE:
           <Link
-            to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis"
+            to={mtpLinks.openPedCan}
             external
           >
             {' '}
-            OpenPedCan (v10)
+            OpenPedCan
             <ExternalLinkIcon />{' '}
           </Link>
           <br />
@@ -520,14 +521,11 @@ const AboutView = ({ data }) => {
         <p>
           SOURCE:
           <Link
-            to={
-              'https://github.com/PediatricOpenTargets/OpenPedCan-analysis/blob/' +
-              '4fb04fe60754b90da3c241dbb8b727c3722487cc/doc/release-notes.md'
-            }
+            to={mtpLinks.openPedCan}
             external
           >
             {' '}
-            OpenPedCan (v10)
+            OpenPedCan
             <ExternalLinkIcon />
           </Link>
         </p>
@@ -581,11 +579,11 @@ const AboutView = ({ data }) => {
         <p>
           SOURCE:
           <Link
-            to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis"
+            to={mtpLinks.openPedCan}
             external
           >
             {' '}
-            OpenPedCan (v10)
+            OpenPedCan
             <ExternalLinkIcon />
           </Link>
           {', '}
@@ -662,11 +660,11 @@ const AboutView = ({ data }) => {
         <p>
           SOURCE:
           <Link
-            to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis"
+            to={mtpLinks.openPedCan}
             external
           >
             {' '}
-            OpenPedCan (v10)
+            OpenPedCan
             <ExternalLinkIcon />
           </Link>
           ,
@@ -1085,7 +1083,7 @@ const AboutView = ({ data }) => {
                 and drug development. To read more about the OpenPedCan data
                 processing methods, view the{' '}
                 <Link
-                  to="https://github.com/PediatricOpenTargets/documentation"
+                  to={mtpLinks.openPedCan}
                   external
                 >
                   documentation
