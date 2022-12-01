@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const getVersion = (obj, prefix='') => {
+  if (obj?.customVersion) return obj.customVersion;
   return obj ? `${prefix + obj?.version} (Released ${obj?.releaseDate})` : '';
 };
 
