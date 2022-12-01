@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from '../../../components/Link';
+import { mtpLinks } from '../../../constants';
 
 const Description = ({ symbol, name }) => (
   <>
@@ -7,10 +8,10 @@ const Description = ({ symbol, name }) => (
     <strong> {symbol} </strong> in pediatric
     <strong> {name} </strong> with human adult normal tissues from GTEx. Source:{' '}
     <Link
-      to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis"
+      to={mtpLinks.openPedCan}
       external
     >
-      OpenPedCan (v10)
+      OpenPedCan
     </Link>
     {', '}
     <Link to="https://www.gtexportal.org/home/" external>

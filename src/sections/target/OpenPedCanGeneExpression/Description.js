@@ -1,15 +1,16 @@
 import React from 'react';
 import Link from '../../../components/Link';
+import { mtpLinks } from '../../../constants';
 
 const Description = ({ symbol }) => (
   <>
     mRNA expression of
     <strong> {symbol} </strong> in pediatric tumors. Source:{' '}
     <Link
-      to="https://github.com/PediatricOpenTargets/OpenPedCan-analysis"
+      to={mtpLinks.openPedCan}
       external
     >
-      OpenPedCan (v10)
+      OpenPedCan
     </Link>
     {', '}
     <Link
