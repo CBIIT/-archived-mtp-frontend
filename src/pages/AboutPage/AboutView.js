@@ -162,6 +162,7 @@ const AboutView = ({ data }) => {
     openPbtaDS: false,
     oncokbDS: false,
     gtexDS: false,
+    p30PanelDS: false,
 
     pedCanDataNavDV: true,
     fdaPmtlDV: false,
@@ -447,6 +448,31 @@ const AboutView = ({ data }) => {
             GTEx
             <ExternalLinkIcon />
           </Link>
+        </p>
+      </div>
+    );
+  };
+
+  const p30PanelDataSource = () => {
+    return (
+      <div className={classes.listContent}>
+        <p>
+          The Children’s Hospital of Philadelphia (CHOP) P30 Panel refers to data generated at CHOP's{' '}
+          <Link to="https://www.chop.edu/centers-programs/division-genomic-diagnostics" external>
+            Division of Genomic Diagnostics (DGD)
+            <ExternalLinkIcon />
+          </Link>.{' '}
+          The CHOP P30 Panel adds tumor fusion panel data to the Molecular Targets Platform.
+          This data is being made available within OpenPedCan through an NIH P30 supplement grant.
+        </p>
+        <p>
+          SOURCE:{' '}
+          <Link to="https://www.chop.edu/cancer-panels" external>
+            CHOP P30 Panel
+            <ExternalLinkIcon />
+          </Link>
+          <br />
+          Where this data is used in the MTP: OpenPedCan Somatic Alterations
         </p>
       </div>
     );
@@ -1051,6 +1077,15 @@ const AboutView = ({ data }) => {
                 'gtexDS'
               )}
               {showHide.gtexDS && gtexDataSource()}
+              <hr className={classes.listDiverHr} />
+
+              {/* CHOP P30 Panel */}
+              {listHeader(
+                'CHOP P30 Panel',
+                '',
+                'p30PanelDS'
+              )}
+              {showHide.p30PanelDS && p30PanelDataSource()}
               <hr className={classes.listDiverHr} />
 
               <div className={classes.space90} />
