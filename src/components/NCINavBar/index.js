@@ -97,7 +97,7 @@ export const navBarData = [
       },
       {
         labelText: 'User Guide',
-        link: '/MTP-User-Guide-v1.pdf',
+        link: '/MTP-User-Guide-v1.1.pdf',
         pageType: 'file',
       },
     ],
