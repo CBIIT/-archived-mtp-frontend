@@ -84,7 +84,7 @@ export const navBarData = [
       },
       {
         labelText: 'Latest Release',
-        link: 'Latest-Release.pdf',
+        link: '/Latest-Release.pdf',
         pageType: 'file',
       },
       {
