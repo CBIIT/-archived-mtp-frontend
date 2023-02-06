@@ -54,7 +54,7 @@
     "react-scroll": "^1.7.16",
     "react-select": "^5.2.2",
     "react-sticky": "^6.0.3",
-    "recoil": "^0.3.0",
+    "recoil": "^0.7.6",
     "smiles-drawer": "^1.1.22",
     "typeface-inter": "^3.3.0"
   },
