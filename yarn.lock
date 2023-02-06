@@ -5297,12 +5297,19 @@ d3-array@1, d3-array@^1.1.1, d3-array@^1.2.0:
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
   integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
 
-d3-array@2, d3-array@^2.3.0, d3-array@^2.8.0:
+d3-array@2, d3-array@^2.3.0:
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
   integrity sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ==
   dependencies:
     internmap "^1.0.0"
+
+d3-array@^3.1.6:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-3.2.2.tgz#f8ac4705c5b06914a7e0025bbf8d5f1513f6a86e"
+  integrity sha512-yEEyEAbDrF8C6Ob2myOBLjwBLck1Z89jMGFee0oPsn95GqjerpaOA4ch+vc2l0FNFFwMD5N7OCSEN5eAlsUbgQ==
+  dependencies:
+    internmap "1 - 2"
 
 d3-axis@1:
   version "1.0.12"
@@ -5350,13 +5357,13 @@ d3-contour@1:
   dependencies:
     d3-array "^1.1.1"
 
-d3-dag@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.5.0.tgz#ba7ce2a52fd968bcaa050f62146535612f9f5ea0"
-  integrity sha512-upCsDDbAUVU52mpz4x0hMpsI4SepdtUSu4F6BEcWgeW6FoP4jSWGLUqNkke1h/s0mWNSzkwB8nV3Sj91La/iHw==
+d3-dag@^0.11.5:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/d3-dag/-/d3-dag-0.11.5.tgz#666675d763770ca013d13b609eba5fc66d8d419e"
+  integrity sha512-sNHvYqjzDlvV2fyEkoOCSuLs2GeWliIg7pJcAiKXgtUSxl0kIX0C2q1J8JzzA9CQWptKxYtzxFCXiKptTW8qsQ==
   dependencies:
-    d3-array "^2.8.0"
-    fastpriorityqueue "^0.6.3"
+    d3-array "^3.1.6"
+    fastpriorityqueue "0.7.2"
     javascript-lp-solver "0.4.24"
     quadprog "^1.6.1"
 
@@ -7093,12 +7100,10 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
 
-fastpriorityqueue@^0.6.3:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/fastpriorityqueue/-/fastpriorityqueue-0.6.4.tgz#7b9e315b47df6badcc2480e5a2d1c2f975971f80"
-  integrity sha512-kQRqFEv6UATZAH1LcNU8TJNRJs456TPohsvX6S0k5NuJKKBDfVN9UadxnHCv0KlykdYhW8xXyQmV9QejkWjluA==
-  dependencies:
-    minimist "^1.2.5"
+fastpriorityqueue@0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/fastpriorityqueue/-/fastpriorityqueue-0.7.2.tgz#64dfee2c2adbc18c076cf7552dc4bfbef7befe3f"
+  integrity sha512-5DtIKh6vtOmEGkYdEPNNb+mxeYCnBiKbK3s4gq52l6cX8I5QaTDWWw0Wx/iYo80fVOblSycHu1/iJeqeNxG8Jw==
 
 fastq@^1.6.0:
   version "1.13.0"
@@ -8843,6 +8848,11 @@ internal-slot@^1.0.3:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+"internmap@1 - 2":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/internmap/-/internmap-2.0.3.tgz#6685f23755e43c524e251d29cbc97248e3061009"
+  integrity sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==
 
 internmap@^1.0.0:
   version "1.0.1"
