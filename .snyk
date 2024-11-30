@@ -1,0 +1,31 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.25.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-mocha > mocha > debug:
+        patched: '2022-08-19T17:47:17.177Z'
+  'npm:minimatch:20160620':
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp > vinyl-fs > glob-stream > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp > vinyl-fs > glob-stream > glob > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp > vinyl-fs > glob-watcher > gaze > globule > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp > vinyl-fs > glob-watcher > gaze > globule > glob > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.newick > gulp-mocha > mocha > glob > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-browserify > browserify > glob > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-mocha > mocha > glob > minimatch:
+        patched: '2022-08-19T17:47:17.177Z'
+  'npm:ms:20170412':
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-mocha > mocha > debug > ms:
+        patched: '2022-08-19T17:47:17.177Z'
+  'npm:uglify-js:20151024':
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-browserify > browserify > umd > ruglify > uglify-js:
+        patched: '2022-08-19T17:47:17.177Z'
+    - cttv.targetGeneTree > tnt.tree > tnt.tree.node > tnt.newick > gulp-browserify > browserify > umd > uglify-js:
+        patched: '2022-08-19T17:47:17.177Z'
