@@ -1365,12 +1365,12 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
-"@graphiql/react@^0.4.2":
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/@graphiql/react/-/react-0.4.2.tgz#2a12c7cf0f3945022c2231ce4e814561f2363ef7"
-  integrity sha512-Df2BaA0HGRkzETCaUw4ZSDe///sfIAGZ6H436A08hmg7SU3yoWJboWGWGc/QD2NyBKVgVBMmzmHcgWhsYh03EA==
+"@graphiql/react@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@graphiql/react/-/react-0.10.0.tgz#8d888949dc6c9ddebe0817aeba3e2c164bfbb1bb"
+  integrity sha512-8Xo1O6SQps6R+mOozN7Ht85/07RwyXgJcKNeR2dWPkJz/1Lww8wVHIKM/AUpo0Aaoh6Ps3UK9ep8DDRfBT4XrQ==
   dependencies:
-    "@graphiql/toolkit" "^0.6.0"
+    "@graphiql/toolkit" "^0.6.1"
     codemirror "^5.65.3"
     codemirror-graphql "^1.3.2"
     copy-to-clipboard "^3.2.0"
@@ -1379,10 +1379,10 @@
     markdown-it "^12.2.0"
     set-value "^4.1.0"
 
-"@graphiql/toolkit@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@graphiql/toolkit/-/toolkit-0.6.0.tgz#e508e58f305a976222f6adb84ab0ec748c26ab60"
-  integrity sha512-mbAwbt4lw2bFp9QW3NLVmh/r/ymczlcqvXk1HfvuC7Ma4h0yzrJiQauJyh1/gF5kjqevcRSquvP/YQJSvh1u6w==
+"@graphiql/toolkit@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@graphiql/toolkit/-/toolkit-0.6.1.tgz#ab2ae0a401ef5a6334a5573397608c2c5867c79d"
+  integrity sha512-rRjbHko6aSg1RWGr3yOJQqEV1tKe8yw9mDSr/18B+eDhVLQ30yyKk2NznFUT9NmIDzWFGR2pH/0lbBhHKmUCqw==
   dependencies:
     "@n1ru4l/push-pull-async-iterable-iterator" "^3.1.0"
     meros "^1.1.4"
@@ -7933,13 +7933,13 @@ graceful-fs@~1.2.0:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-1.2.3.tgz#15a4806a57547cb2d2dbf27f42e89a8c3451b364"
   integrity sha512-iiTUZ5vZ+2ZV+h71XAgwCSu6+NAizhFU3Yw8aC/hH5SQ3SnISqEqAek40imAFGtDcwJKNhXvSY+hzIolnLwcdQ==
 
-graphiql@^1.4.2:
-  version "1.9.9"
-  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.9.9.tgz#dfc1760e7552140247e591e3c66d1ccc389ea71f"
-  integrity sha512-eJ5kGpXFXw69QG/1SJrQs/mzGpDIv4XeGqohGSKQCOh7NtsAsQIxs/VMVR8Lvv9tx6YiIFUvAHp997NlyOwHbQ==
+graphiql@^1.10.0:
+  version "1.11.5"
+  resolved "https://registry.yarnpkg.com/graphiql/-/graphiql-1.11.5.tgz#daf0de27b704f17c9d87ce56eea0fdcd7a370269"
+  integrity sha512-NI92XdSVwXTsqzJc6ykaAkKVMeC8IRRp3XzkxVQwtqDsZlVKtR2ZnssXNYt05TMGbi1ehoipn9tFywVohOlHjg==
   dependencies:
-    "@graphiql/react" "^0.4.2"
-    "@graphiql/toolkit" "^0.6.0"
+    "@graphiql/react" "^0.10.0"
+    "@graphiql/toolkit" "^0.6.1"
     entities "^2.0.0"
     graphql-language-service "^5.0.6"
     markdown-it "^12.2.0"
